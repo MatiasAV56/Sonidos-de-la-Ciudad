@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubicación - Sonidos de la Ciudad</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img src="img/logo-festival.png" alt="Sonidos de la Ciudad"></a></div>
+      <button id="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="artistas.html" class="nav-link">Artistas</a></li>
+          <li><a href="cronograma.html" class="nav-link">Cronograma</a></li>
+          <li><a href="entradas.html" class="nav-link">Entradas</a></li>
+          <li><a href="ubicacion.html" class="nav-link activo">Ubicación</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Dónde <span>Encontrarnos</span></h2>
+        <p class="section-subtitle">Cada día del festival se realiza en una sede distinta de Santiago del Estero</p>
+
+        <!-- DÍA 1 -->
+        <div class="sede-mapa-wrap">
+          <iframe class="iframe-mapa"
+            src="https://www.google.com/maps?q=Old+Lions+Rugby+Club+Santiago+del+Estero&output=embed"
+            title="Mapa Old Lions Rugby Club"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <h3 class="sede-titulo teal">&#9679; Día 1 — Rock (Viernes 15) — Old Lions Rugby Club</h3>
+        <div class="sede-grid">
+          <div class="card">
+            <h4 class="sede-subtitulo">&#128205; Dirección</h4>
+            <p class="sede-texto">
+              Old Lions Rugby Club<br>
+              Dr. Enrique Pastor Mujica s/n<br>
+              G4200 Santiago del Estero<br>
+              Argentina
+            </p>
+            <p class="sede-btn-wrap">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Old+Lions+Rugby+Club+Santiago+del+Estero" target="_blank" class="btn btn-outline">Cómo llegar</a>
+            </p>
+          </div>
+          <div class="card">
+            <h4 class="sede-subtitulo">&#128663; Estacionamiento</h4>
+            <p class="sede-texto">
+              Estacionamiento vigilado con capacidad para 400 vehículos. Ingreso por Ruta 9. <strong>Abono Premium incluye estacionamiento gratuito.</strong>
+            </p>
+            <p class="sede-nota">
+              También hay estacionamientos privados en la zona.
+            </p>
+          </div>
+        </div>
+
+        <!-- DÍA 2 -->
+        <div class="sede-mapa-wrap">
+          <iframe class="iframe-mapa"
+            src="https://www.google.com/maps?q=Lawn+Tennis+Club+Santiago+del+Estero&output=embed"
+            title="Mapa Santiago Lawn Tennis Club"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <h3 class="sede-titulo naranja">&#9679; Día 2 — Pop &amp; Electrónica (Sábado 16) — Santiago Lawn Tennis Club</h3>
+        <div class="sede-grid">
+          <div class="card">
+            <h4 class="sede-subtitulo">&#128205; Dirección</h4>
+            <p class="sede-texto">
+              Santiago Lawn Tennis Club<br>
+              Nicolás Heredia y Urquiza s/n<br>
+              G4200 Santiago del Estero<br>
+              Argentina
+            </p>
+            <p class="sede-btn-wrap">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Lawn+Tennis+Club+Santiago+del+Estero" target="_blank" class="btn btn-outline">Cómo llegar</a>
+            </p>
+          </div>
+          <div class="card">
+            <h4 class="sede-subtitulo">&#128663; Estacionamiento</h4>
+            <p class="sede-texto">
+              Estacionamiento vigilado con capacidad para 300 vehículos. Ingreso por Av. Belgrano Sur. <strong>Abono Premium incluye estacionamiento gratuito.</strong>
+            </p>
+            <p class="sede-nota">
+              Estacionamientos privados disponibles en los alrededores del club.
+            </p>
+          </div>
+        </div>
+
+        <!-- DÍA 3 -->
+        <div class="sede-mapa-wrap">
+          <iframe class="iframe-mapa"
+            src="https://www.google.com/maps?q=Hipodromo+Santiago+del+Estero&output=embed"
+            title="Mapa Hipódromo 27 de Abril"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <h3 class="sede-titulo purpura">&#9679; Día 3 — Metal (Domingo 17) — Hipódromo 27 de Abril</h3>
+        <div class="sede-grid">
+          <div class="card">
+            <h4 class="sede-subtitulo">&#128205; Dirección</h4>
+            <p class="sede-texto">
+              Hipódromo 27 de Abril<br>
+              Av. Nuñez del prado s/n<br>
+              G4200 Santiago del Estero<br>
+              Argentina
+            </p>
+            <p class="sede-btn-wrap">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Hipodromo+Santiago+del+Estero" target="_blank" class="btn btn-outline">Cómo llegar</a>
+            </p>
+          </div>
+          <div class="card">
+            <h4 class="sede-subtitulo">&#128663; Estacionamiento</h4>
+            <p class="sede-texto">
+              Amplio estacionamiento con capacidad para 600 vehículos. Ingreso por Av. Roca. <strong>Abono Premium incluye estacionamiento gratuito.</strong>
+            </p>
+            <p class="sede-nota">
+              Playas de estacionamiento privadas en las inmediaciones del hipódromo.
+            </p>
+          </div>
+        </div>
+
+        <!-- ANCLAJE: volver arriba -->
+        <div class="volver-arriba">
+          <a href="#" class="btn btn-outline">Volver arriba <i class="fas fa-arrow-up"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IFRAME REDES -->
+    <section style="background:var(--gris)">
+      <div class="container">
+        <h2 class="section-title">Redes <span>Sociales</span></h2>
+        <p class="section-subtitle">Seguinos y enterate de todas las novedades</p>
+        <div class="redes-grid">
+          <div class="red-social">
+            <h3>Instagram</h3>
+            <div class="iframe-container" style="padding-bottom:75%">
+              <iframe src="https://www.instagram.com/p/Cq6zXk6rOc1/embed" title="Publicación de Instagram del festival" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="red-social">
+            <h3>Facebook</h3>
+            <div class="iframe-container" style="padding-bottom:75%">
+              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" title="Página de Facebook del festival" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sonidos de la Ciudad</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cronograma.html">Cronograma</a></li>
+          <li><a href="entradas.html">Entradas</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@sonidosdelaciudad.com">info@sonidosdelaciudad.com</a></li>
+          <li><a href="tel:+543854567890">+54 385 456-7890</a></li>
+          <li><a href="contacto.html">Formulario de contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2027 Sonidos de la Ciudad &bull; Todos los derechos reservados &bull; Proyecto de Evaluación &bull; Programación III &bull; ITSE</p>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Sonidos de la Ciudad</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img src="img/logo-festival.png" alt="Sonidos de la Ciudad"></a></div>
+      <button id="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="artistas.html" class="nav-link">Artistas</a></li>
+          <li><a href="cronograma.html" class="nav-link">Cronograma</a></li>
+          <li><a href="entradas.html" class="nav-link">Entradas</a></li>
+          <li><a href="ubicacion.html" class="nav-link">Ubicación</a></li>
+          <li><a href="contacto.html" class="nav-link activo">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-subtitle">Dejanos tu mensaje y te respondemos a la brevedad</p>
+
+        <!-- FORMULARIO DE CONTACTO -->
+        <form class="form-contacto" action="#" method="post">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono (opcional)</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+54 385 456-7890">
+          </div>
+
+          <div class="form-group">
+            <label for="asunto">Asunto</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Seleccioná un motivo...</option>
+              <option value="informacion">Información general</option>
+              <option value="entradas">Consulta sobre entradas</option>
+              <option value="prensa">Prensa / Medios</option>
+              <option value="artistas">Propuesta artística</option>
+              <option value="voluntariado">Voluntariado / Trabajo</option>
+              <option value="sugerencia">Sugerencia / Reclamo</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribí tu mensaje aquí..." required></textarea>
+          </div>
+
+          <div class="form-group" style="display:flex;gap:15px;align-items:center;flex-wrap:wrap">
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <button type="reset" class="btn btn-outline">Limpiar formulario</button>
+          </div>
+
+          <p style="margin-top:15px;font-size:0.8rem;color:#64748b">
+            También podés escribirnos directamente a <a href="mailto:info@sonidosdelaciudad.com">info@sonidosdelaciudad.com</a>
+            o llamarnos al <a href="tel:+543854567890">+54 385 456-7890</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- IFRAME REDES SOCIALES + MAPA -->
+    <section style="background:var(--gris)">
+      <div class="container">
+        <h2 class="section-title">Encontranos en las <span>Redes</span></h2>
+        <p class="section-subtitle">Seguinos para estar al tanto de todas las novedades</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px">
+          <div style="background:var(--grad-card);border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center">
+            <h3 style="color:var(--claro);margin-bottom:15px;font-size:1rem">Instagram</h3>
+            <div class="iframe-container" style="padding-bottom:75%">
+              <iframe src="https://www.instagram.com/p/Cq6zXk6rOc1/embed" title="Publicación de Instagram del festival" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div style="background:var(--grad-card);border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center">
+            <h3 style="color:var(--claro);margin-bottom:15px;font-size:1rem">Facebook</h3>
+            <div class="iframe-container" style="padding-bottom:75%">
+              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" title="Página de Facebook del festival" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+          <div style="background:var(--grad-card);border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center">
+            <h3 style="color:var(--claro);margin-bottom:15px;font-size:1rem">Ubicación</h3>
+            <p style="color:#94a3b8;font-size:0.85rem;margin-bottom:15px">Tres sedes, tres días</p>
+            <div class="iframe-container" style="padding-bottom:75%">
+              <iframe src="https://www.google.com/maps?q=Old+Lions+Rugby+Club+Santiago+del+Estero&output=embed" title="Mapa de ubicación del festival" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sonidos de la Ciudad</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cronograma.html">Cronograma</a></li>
+          <li><a href="entradas.html">Entradas</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@sonidosdelaciudad.com">info@sonidosdelaciudad.com</a></li>
+          <li><a href="tel:+543854567890">+54 385 456-7890</a></li>
+          <li><a href="contacto.html">Formulario de contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2027 Sonidos de la Ciudad &bull; Todos los derechos reservados &bull; Proyecto de Evaluación &bull; Programación III &bull; ITSE</p>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma - Sonidos de la Ciudad</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img src="img/logo-festival.png" alt="Sonidos de la Ciudad"></a></div>
+      <button id="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="artistas.html" class="nav-link">Artistas</a></li>
+          <li><a href="cronograma.html" class="nav-link activo">Cronograma</a></li>
+          <li><a href="entradas.html" class="nav-link">Entradas</a></li>
+          <li><a href="ubicacion.html" class="nav-link">Ubicación</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Cronograma <span>del Festival</span></h2>
+        <p class="section-subtitle">Tres días de música ininterrumpida en tres escenarios</p>
+
+        <!-- LISTA ORDENADA: Actuaciones por día -->
+        <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;font-size:1.1rem;color:var(--claro)">&#9679; Día 1 &mdash; Escenario Rock (Viernes 15) &mdash; Old Lions Rugby Club</h3>
+        <p style="color:#94a3b8;margin-bottom:15px;font-style:italic">De las guitarras afiladas del nuevo rock al pilar fundamental del rock alternativo.</p>
+        <ol class="lista-cronograma">
+          <li><span class="hora">18:00</span> <strong>The Warning</strong> &mdash; Hard Rock / Rock Alternativo <em>(Apertura)</em></li>
+          <li><span class="hora">19:30</span> <strong>Turnstile</strong> &mdash; Hardcore Punk / Rock</li>
+          <li><span class="hora">21:15</span> <strong>Fontaines D.C.</strong> &mdash; Post-punk <em>(Co-Headliner)</em></li>
+          <li><span class="hora">23:00</span> <strong>Deftones</strong> &mdash; Metal Alternativo <em>(HEADLINER / Cierre)</em></li>
+        </ol>
+
+        <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;font-size:1.1rem;color:var(--claro)">&#9679; Día 2 &mdash; Escenario Pop &amp; Electrónica (Sábado 16) &mdash; Santiago Lawn Tennis Club</h3>
+        <p style="color:#94a3b8;margin-bottom:15px;font-style:italic">Una transición perfecta desde el club dance diurno, pasando por el fenómeno viral, hasta la fiesta electrónica de la madrugada.</p>
+        <ol class="lista-cronograma">
+          <li><span class="hora">18:00</span> <strong>Peggy Gou</strong> &mdash; House / Club Dance <em>(Apertura / Set de Atardecer)</em></li>
+          <li><span class="hora">19:45</span> <strong>Chappell Roan</strong> &mdash; Pop</li>
+          <li><span class="hora">21:30</span> <strong>Sabrina Carpenter</strong> &mdash; Pop Global <em>(HEADLINER POP)</em></li>
+          <li><span class="hora">23:30</span> <strong>Skrillex</strong> &mdash; Bass Music / Electrónica <em>(HEADLINER ELECTRÓNICA / Cierre)</em></li>
+        </ol>
+
+        <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;font-size:1.1rem;color:var(--claro)">&#9679; Día 3 &mdash; Escenario Metal (Domingo 17) &mdash; Hipódromo 27 de Abril</h3>
+        <p style="color:#94a3b8;margin-bottom:15px;font-style:italic">El día de la pesadez y la velocidad. Un viaje cronológico por la historia y la potencia del metal.</p>
+        <ol class="lista-cronograma">
+          <li><span class="hora">17:30</span> <strong>Evanescence</strong> &mdash; Metal Alternativo / Gótico <em>(Apertura)</em></li>
+          <li><span class="hora">19:15</span> <strong>Megadeth</strong> &mdash; Thrash Metal</li>
+          <li><span class="hora">21:00</span> <strong>Iron Maiden</strong> &mdash; Heavy Metal <em>(Co-Headliner)</em></li>
+          <li><span class="hora">23:00</span> <strong>AC/DC</strong> &mdash; Hard Rock <em>(HEADLINER / Cierre)</em></li>
+        </ol>
+
+        <!-- TABLA: Cronograma por escenario -->
+        <h3 style="margin:50px 0 20px;text-transform:uppercase;letter-spacing:2px;font-size:1.1rem;color:var(--claro)">&#9679; Tabla General del Festival</h3>
+        <div class="tabla-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Horario</th>
+                <th>Escenario Rock</th>
+                <th>Escenario Pop &amp; Electrónica</th>
+                <th>Escenario Metal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Viernes 15</strong><br><span style="font-size:0.75rem;color:var(--teal)">Old Lions Rugby Club</span></td>
+                <td>Rock &mdash; The Warning, Turnstile, Fontaines D.C., Deftones</td>
+                <td>&mdash;</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td><strong>Sábado 16</strong><br><span style="font-size:0.75rem;color:var(--naranja)">Santiago Lawn Tennis Club</span></td>
+                <td>&mdash;</td>
+                <td>Pop &amp; Electrónica &mdash; Peggy Gou, Chappell Roan, Sabrina Carpenter, Skrillex</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td><strong>Domingo 17</strong><br><span style="font-size:0.75rem;color:var(--purpura)">Hipódromo 27 de Abril</span></td>
+                <td>&mdash;</td>
+                <td>&mdash;</td>
+                <td>Metal &mdash; Evanescence, Megadeth, Iron Maiden, AC/DC</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section style="background:var(--gris)">
+      <div class="container">
+        <h2 class="section-title">Actuación <span>Destacada</span></h2>
+        <p class="section-subtitle">Reviví una de las mejores presentaciones de la edición pasada</p>
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="Actuación destacada del festival" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sonidos de la Ciudad</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cronograma.html">Cronograma</a></li>
+          <li><a href="entradas.html">Entradas</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@sonidosdelaciudad.com">info@sonidosdelaciudad.com</a></li>
+          <li><a href="tel:+543854567890">+54 385 456-7890</a></li>
+          <li><a href="contacto.html">Formulario de contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2027 Sonidos de la Ciudad &bull; Todos los derechos reservados &bull; Proyecto de Evaluación &bull; Programación III &bull; ITSE</p>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+
+</body>
+</html>

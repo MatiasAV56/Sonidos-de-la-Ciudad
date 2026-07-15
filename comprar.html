@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprar Entradas - Sonidos de la Ciudad</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img src="img/logo-festival.png" alt="Sonidos de la Ciudad"></a></div>
+      <button id="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="artistas.html" class="nav-link">Artistas</a></li>
+          <li><a href="cronograma.html" class="nav-link">Cronograma</a></li>
+          <li><a href="entradas.html" class="nav-link activo">Entradas</a></li>
+          <li><a href="ubicacion.html" class="nav-link">Ubicación</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Compra de <span>Entradas</span></h2>
+        <p class="section-subtitle">Completá todos los datos para adquirir tus entradas</p>
+
+        <!-- CONTADOR REGRESIVO -->
+        <div class="compra-timer">
+          <i class="fas fa-hourglass-half"></i>
+          <span>Tiempo restante para completar la compra:</span>
+          <strong id="contador">15:00</strong>
+        </div>
+
+        <form id="form-compra" class="form-compra" novalidate>
+
+          <!-- ========== FILA: FORMULARIO + RESUMEN ========== -->
+          <div class="compra-grid">
+
+            <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+            <div class="compra-form">
+
+              <!-- === DATOS DEL COMPRADOR === -->
+              <fieldset class="compra-fieldset">
+                <legend><i class="fas fa-user"></i> Datos del Comprador</legend>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="nombre-completo">Nombre completo</label>
+                    <input type="text" id="nombre-completo" placeholder="Ej: Juan Pérez" autocomplete="name" required>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="Ej: juan@ejemplo.com" autocomplete="email" required>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="telefono">Teléfono (10 dígitos)</label>
+                    <input type="tel" id="telefono" placeholder="Ej: 1123456789" maxlength="10" autocomplete="tel" required>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fecha-nac">Fecha de nacimiento (dd/mm/yyyy)</label>
+                    <input type="text" id="fecha-nac" placeholder="Ej: 15/06/1998" maxlength="10" required>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="pais">País de residencia</label>
+                  <select id="pais" required>
+                    <option value="">Cargando países...</option>
+                  </select>
+                  <div class="feedback"></div>
+                </div>
+              </fieldset>
+
+              <!-- === DATOS DEL EVENTO === -->
+              <fieldset class="compra-fieldset">
+                <legend><i class="fas fa-ticket-alt"></i> Datos del Evento</legend>
+
+                <div class="form-group">
+                  <label for="evento-select">Selección del evento</label>
+                  <select id="evento-select" required>
+                    <option value="">Cargando eventos...</option>
+                  </select>
+                  <div class="feedback"></div>
+                </div>
+
+                <div class="evento-info">
+                  <div class="evento-info-item">
+                    <span class="evento-info-label">Descripción</span>
+                    <span id="evento-desc" class="evento-info-valor">—</span>
+                  </div>
+                  <div class="evento-info-row">
+                    <div class="evento-info-item">
+                      <span class="evento-info-label">Fecha</span>
+                      <span id="evento-fecha" class="evento-info-valor">—</span>
+                    </div>
+                    <div class="evento-info-item">
+                      <span class="evento-info-label">Horario</span>
+                      <span id="evento-horario" class="evento-info-valor">—</span>
+                    </div>
+                  </div>
+                  <div class="evento-info-row">
+                    <div class="evento-info-item">
+                      <span class="evento-info-label">Ubicación</span>
+                      <span id="evento-ubicacion" class="evento-info-valor">—</span>
+                    </div>
+                    <div class="evento-info-item">
+                      <span class="evento-info-label">Género</span>
+                      <span id="evento-genero" class="evento-info-valor">—</span>
+                    </div>
+                  </div>
+                  <div class="evento-info-row">
+                    <div class="evento-info-item">
+                      <span class="evento-info-label">Artistas</span>
+                      <span id="evento-artista" class="evento-info-valor">—</span>
+                    </div>
+                    <div class="evento-info-item">
+                      <span class="evento-info-label">Disponibilidad</span>
+                      <span id="evento-disponibles" class="evento-info-valor">—</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="tipo-entrada">Tipo de entrada</label>
+                    <select id="tipo-entrada" required>
+                      <option value="">Seleccioná un tipo</option>
+                      <option value="General">General</option>
+                      <option value="VIP">VIP</option>
+                      <option value="Palco">Palco</option>
+                    </select>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cantidad">Cantidad de entradas (1–6)</label>
+                    <input type="text" id="cantidad" placeholder="Ej: 2" maxlength="1" inputmode="numeric" required>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- === DATOS DE PAGO === -->
+              <fieldset class="compra-fieldset">
+                <legend><i class="fas fa-credit-card"></i> Datos de Pago</legend>
+
+                <!-- TARJETA VISUAL -->
+                <div class="card-visual-container">
+                  <div class="card-visual" id="card-visual">
+                    <!-- FRENTE -->
+                    <div class="card-front">
+                      <div class="card-top-row">
+                        <div class="card-chip">
+                          <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="card-brand-logo" id="card-brand-logo">
+                          <i class="fas fa-credit-card"></i>
+                        </div>
+                      </div>
+                      <div class="card-number" id="card-display-number">•••• •••• •••• ••••</div>
+                      <div class="card-bottom-row">
+                        <div class="card-field">
+                          <span class="card-field-label">Titular</span>
+                          <span class="card-field-value" id="card-display-name">TU NOMBRE</span>
+                        </div>
+                        <div class="card-field card-field-exp">
+                          <span class="card-field-label">Vence</span>
+                          <span class="card-field-value" id="card-display-exp">MM/AA</span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- DORSO -->
+                    <div class="card-back">
+                      <div class="card-magstrip"></div>
+                      <div class="card-back-content">
+                        <div class="card-signature">
+                          <span class="card-field-label">Firma</span>
+                          <div class="card-signature-line"></div>
+                        </div>
+                        <div class="card-cvv-box">
+                          <span class="card-field-label">CVV</span>
+                          <span class="card-field-value" id="card-display-cvv">•••</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="num-tarjeta">Número de tarjeta</label>
+                  <input type="text" id="num-tarjeta" placeholder="Ej: 4111 1111 1111 1111" maxlength="19" inputmode="numeric" autocomplete="cc-number" required>
+                  <div id="card-brand" class="card-brand"></div>
+                  <div class="feedback"></div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="vencimiento">Fecha de vencimiento (MM/AA)</label>
+                    <input type="text" id="vencimiento" placeholder="Ej: 12/28" maxlength="5" autocomplete="cc-exp" required>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="Ej: 123" maxlength="4" inputmode="numeric" autocomplete="cc-csc" required>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre-tarjeta">Nombre en la tarjeta</label>
+                  <input type="text" id="nombre-tarjeta" placeholder="Ej: JUAN PEREZ" autocomplete="cc-name" required>
+                  <div class="feedback"></div>
+                </div>
+              </fieldset>
+
+              <!-- BOTÓN DE PAGO -->
+              <div class="compra-actions">
+                <div id="btn-error" class="btn-error-msg">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Completá todos los campos correctamente para habilitar el pago
+                </div>
+                <button type="submit" id="btn-pagar" class="btn btn-primary btn-lg" disabled>
+                  <i class="fas fa-lock"></i> Pagar ahora
+                </button>
+              </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: RESUMEN + PRECIO -->
+            <div class="compra-sidebar">
+              <div class="compra-resumen">
+                <h3><i class="fas fa-receipt"></i> Resumen de compra</h3>
+                <div id="resumen-contenido" class="resumen-contenido">
+                  <p style="color:var(--mutado);font-style:italic">Completá el formulario para ver el resumen de tu compra.</p>
+                </div>
+              </div>
+
+              <div class="compra-total-box">
+                <span class="compra-total-label">Total a pagar</span>
+                <span id="precio-total" class="compra-total-valor">$0</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE ÉXITO -->
+  <div id="modal-exito" class="modal">
+    <div class="modal-contenido">
+      <div class="modal-header">
+        <i class="fas fa-check-circle" style="font-size:3rem;color:#22c55e"></i>
+        <h3>¡Compra Exitosa!</h3>
+      </div>
+      <div id="modal-detalles" class="modal-body"></div>
+      <div class="modal-footer">
+        <a href="entradas.html" class="btn btn-outline">Volver a entradas</a>
+        <a href="index.html" class="btn btn-primary">Ir al inicio</a>
+      </div>
+      <button id="modal-cerrar" class="modal-cerrar" aria-label="Cerrar">&times;</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sonidos de la Ciudad</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cronograma.html">Cronograma</a></li>
+          <li><a href="entradas.html">Entradas</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@sonidosdelaciudad.com">info@sonidosdelaciudad.com</a></li>
+          <li><a href="tel:+543854567890">+54 385 456-7890</a></li>
+          <li><a href="contacto.html">Formulario de contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2027 Sonidos de la Ciudad &bull; Todos los derechos reservados &bull; Proyecto de Evaluación &bull; Programación III &bull; ITSE</p>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+  <script src="js/compra.js"></script>
+</body>
+</html>

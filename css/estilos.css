@@ -1,0 +1,2123 @@
+/* ============================================================
+   Sonidos de la Ciudad — Estilos Globales
+   ------------------------------------------------------------
+   Paleta de colores seleccionada de ColorHunt
+   (https://colorhunt.co/palette/0a0a1412122a1e1e3aff6b35)
+   + variaciones propias para profundidad.
+   ============================================================ */
+
+/* ----- Google Fonts (tipografía externa) ----- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* ============================================================
+   1. SELECTOR UNIVERSAL — reset básico
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   2. PSEUDOELEMENTO ::selection — color de selección de texto
+   ============================================================ */
+::selection {
+  background: #7c3aed;
+  color: #fff;
+}
+
+/* ============================================================
+   3. VARIABLES CSS (custom properties) — paleta de colores
+   ------------------------------------------------------------
+   Paleta obtenida de ColorHunt + Adobe Color:
+   - Naranja principal: #ff6b35 (energía, acción)
+   - Púrpura secundario: #7c3aed (misterio, festival)
+   - Teal acento: #06b6d4 (frescura, contraste)
+   ============================================================ */
+:root {
+  --naranja: #ff6b35;
+  --purpura: #7c3aed;
+  --teal: #06b6d4;
+  --oscuro: #0a0a14;
+  --gris: #12122a;
+  --claro: #e8edf5;
+  --texto: #c8d0dc;
+  --mutado: #64748b;
+  --borde: #1e1e3a;
+  --grad-hero: linear-gradient(135deg, #0a0a14 0%, #1a0a2e 40%, #2d0a3a 100%);
+  --grad-card: linear-gradient(145deg, #12122a, #1a1a2e);
+  --grad-principal: linear-gradient(90deg, #ff6b35, #7c3aed);
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+/* ============================================================
+   4. SELECTORES DE TIPO (type selectors)
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* base para rem */
+  /* Unidad vw para base responsiva */
+  font-size: clamp(14px, 1vw + 12px, 18px);
+}
+
+body {
+  font: 400 1rem/1.6 var(--font-body); /* shorthand font */
+  background: linear-gradient(rgba(10, 10, 20, 0.88), rgba(10, 10, 20, 0.88)), url('../img/fondo-pagina.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----- Encabezados ----- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+/* ----- Enlaces ----- */
+a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: transparent;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+/* PSEUDOCLASE :hover en enlaces */
+a:hover {
+  color: var(--naranja);
+  text-decoration-color: var(--naranja);
+}
+
+/* Enlaces dentro de nav — sin subrayado (estilo botón) */
+nav a {
+  text-decoration: none;
+}
+
+/* Enlaces dentro de footer — subrayado solo en hover */
+footer a {
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--naranja);
+}
+
+/* ----- Imágenes ----- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ----- Listas ----- */
+ul, ol {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================================
+   5. SELECTORES POR ID (ID selectors)
+   ============================================================ */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+#menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--claro);
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animación del menú hamburguesa al abrir (transformación) */
+#menu-toggle.abierto span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#menu-toggle.abierto span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle.abierto span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+#menu {
+  display: flex;
+  align-items: center;
+}
+
+#hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   6. SELECTORES DE CLASE (class selectors)
+   ============================================================ */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.section-title span {
+  background: var(--grad-principal);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* PSEUDOELEMENTO ::after en section-title (barra decorativa) */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--grad-principal);
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--mutado);
+  margin-bottom: 2.8rem;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   7. SELECTORES AVANZADOS
+   ============================================================ */
+
+/* ----- 7a. SELECTOR DESCENDIENTE (space) ----- */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+footer ul li a {
+  font-size: 0.85rem;
+  color: var(--mutado);
+}
+
+article .artista-header h2 {
+  font-size: 1.3rem;
+  color: var(--claro);
+}
+
+header .header-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+}
+
+/* ----- 7b. SELECTOR HIJO DIRECTO (>) ----- */
+header > nav {
+  display: flex;
+}
+
+/* SELECTOR HIJO DIRECTO (>) — ejemplo de selector avanzado */
+.hero-content > h1 {
+  display: inline-block;
+}
+
+/* SELECTOR DE HERMANO ADYACENTE adicional */
+section + footer {
+  margin-top: 0;
+}
+
+section > .container > p {
+  font-size: 0.95rem;
+}
+
+/* ----- 7c. SELECTOR HERMANO ADYACENTE (+) ----- */
+h2 + p {
+  margin-top: -0.3rem;
+}
+
+.section-title + .section-subtitle {
+  margin-top: 0.5rem;
+}
+
+article.artista + article.artista {
+  margin-top: 25px;
+}
+
+/* Override para grilla de artistas: el margin-top rompe la alineación horizontal */
+.card-grid-artistas article.artista + article.artista {
+  margin-top: 0;
+}
+
+/* ----- 7d. SELECTOR HERMANO GENERAL (~) ----- */
+h3 ~ p {
+  color: #94a3b8;
+  margin-bottom: 0.9375rem;
+  font-style: italic;
+}
+
+.section-title ~ .card-grid {
+  margin-top: 1.5rem;
+}
+
+/* ----- 7e. SELECTORES DE ATRIBUTO ----- */
+
+/* Enlaces que abren en nueva pestaña */
+a[target="_blank"]::after {
+  content: ' \2197';
+  font-size: 0.75em;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+a[target="_blank"]:hover::after {
+  transform: translate(2px, -2px);
+}
+
+/* Inputs de tipo texto */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #0f0f1a;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--claro);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Enlaces que empiezan con mailto: */
+a[href^="mailto:"] {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+a[href^="mailto:"]:hover {
+  color: var(--naranja);
+}
+
+/* Enlaces que terminan en .com */
+a[href$=".com"]:not([href^="mailto:"]) {
+  position: relative;
+}
+
+/* PSEUDOCLASE :not() combinada */
+a[target="_blank"]:not(.btn) {
+  border-bottom: 1px dotted transparent;
+}
+
+a[target="_blank"]:not(.btn):hover {
+  border-bottom-color: var(--naranja);
+}
+
+/* ============================================================
+   8. HEADER — menú animado con posicionamiento sticky
+   ============================================================ */
+header {
+  background: rgba(10, 10, 20, 0.97);
+  border-bottom: 3px solid;
+  border-image: var(--grad-principal) 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Logo con hover transform (TRANSFORMACIÓN 1: rotate) */
+.logo a {
+  display: inline-block;
+  transition: transform 0.4s ease;
+  line-height: 0;
+}
+
+.logo a img {
+  height: 115px;
+  width: auto;
+  display: block;
+}
+
+/* TRANSFORMACIÓN 1: rotate */
+.logo a:hover {
+  transform: rotate(-3deg) scale(1.05);
+}
+
+/* ----- Nav links animados (PSEUDOCLASE :hover) ----- */
+.nav-link {
+  display: block;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--texto);
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+/* PSEUDOELEMENTO ::before para animación de subrayado en hover */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--grad-principal);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* PSEUDOCLASE :hover en nav links */
+.nav-link:hover::before {
+  width: 60%;
+  left: 20%;
+}
+
+.nav-link:hover {
+  background: var(--grad-principal);
+  color: #fff;
+}
+
+.nav-link.activo {
+  color: var(--naranja);
+  background: transparent;
+}
+
+.nav-link.activo::before {
+  width: 60%;
+  left: 20%;
+  background: var(--naranja);
+}
+
+
+
+/* ============================================================
+   9. HERO
+   ============================================================ */
+#hero {
+  background: var(--grad-hero);
+  padding: 100px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PSEUDOELEMENTO ::before para efecto de brillo animado */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes heroGlow {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-1.25rem, 1.25rem); }
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+#hero h1 {
+  font-size: 5vw;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, var(--naranja), var(--purpura), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.9375rem;
+  /* TRANSICIÓN 1 para h1 */
+  transition: letter-spacing 0.5s ease;
+}
+
+#hero h1:hover {
+  letter-spacing: 8px;
+}
+
+#hero .fecha {
+  font-size: 1.2rem;
+  color: var(--claro);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.625rem;
+}
+
+#hero .lugares-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#hero .lugares-lista li {
+  font-size: 1rem;
+  color: var(--teal);
+}
+
+#hero p {
+  font-size: 1.05rem;
+  color: var(--texto);
+  max-width: 650px;
+  margin: 0 auto 1.875rem;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   10. BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2.1875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  /* TRANSICIÓN 2 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  font-family: var(--font-heading);
+}
+
+.btn-primary {
+  background: var(--grad-principal);
+  color: #fff;
+}
+
+/* TRANSFORMACIÓN 2: translateY + scale */
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+}
+
+.btn-outline:hover {
+  background: var(--teal);
+  color: var(--oscuro);
+  /* TRANSFORMACIÓN 3: translateY */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25);
+}
+
+/* ============================================================
+   11. SECTION — padding y bordes en divs
+   ============================================================ */
+section {
+  padding: 4.375rem 1.25rem;
+}
+
+/* SELECTOR DESCENDIENTE + bordes explícitos */
+section .card {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 0;
+}
+
+/* ============================================================
+   12. CARDS GRID
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5625rem;
+}
+
+.card {
+  background: var(--grad-card);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* PSEUDOCLASE :hover en cards + TRANSFORMACIÓN 4 + TRANSICIÓN 3 */
+.card:hover {
+  border-color: var(--purpura);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.15);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-body h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.3125rem;
+  color: var(--claro);
+}
+
+.card-body .genero {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--naranja);
+  margin-bottom: 0.5rem;
+}
+
+.card-body p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   13. ARTIST PAGE — article cards
+   ============================================================ */
+.card-grid-artistas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5625rem;
+  align-items: stretch; /* Asegura que todas las celdas midan lo mismo de alto */
+}
+
+article.artista {
+  background: var(--grad-card);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  border-left: 4px solid var(--purpura);
+  
+  /* CAMBIO 1: Cambiamos a flexbox vertical para controlar perfectamente las partes internas */
+  display: flex;
+  flex-direction: column; 
+  
+  height: 100%; /* CAMBIO 2: Obliga a la tarjeta a usar el 100% de la altura de la fila */
+  min-height: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* PSEUDOCLASE :nth-child para alternar colores de borde */
+.card-grid-artistas article.artista:nth-child(4n+1) {
+  border-left-color: var(--naranja);
+}
+.card-grid-artistas article.artista:nth-child(4n+2) {
+  border-left-color: var(--teal);
+}
+.card-grid-artistas article.artista:nth-child(4n+3) {
+  border-left-color: var(--purpura);
+}
+.card-grid-artistas article.artista:nth-child(4n+4) {
+  border-left-color: var(--teal);
+}
+
+article.artista .card-img {
+  height: 200px;
+  min-height: 200px;
+  width: 100%;
+  object-fit: cover; /* Evita que la imagen del artista se deforme verticalmente */
+}
+
+article.artista .artista-header {
+  padding: 1.5625rem 1.5625rem 0;
+}
+
+article.artista .artista-body {
+  padding: 0.9375rem 1.5625rem 1.5625rem;
+  
+  /* CAMBIO 3: Hace que la sección de contenido de texto se expanda para llenar el espacio restante */
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+article.artista .artista-body p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  
+  /* CAMBIO 4: Al empujar el margen inferior, forzamos a que el horario/botón inferior 
+     quede exactamente alineado abajo del todo en todas las tarjetas por igual */
+  margin-bottom: 1.25rem; 
+}
+
+/* ============================================================
+   14. TABLES
+   ============================================================ */
+.tabla-container {
+  overflow-x: auto;
+  margin: 1.875rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--grad-card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background: var(--grad-principal);
+}
+
+th {
+  padding: 0.875rem 1.125rem;
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  font-weight: 700;
+}
+
+td {
+  padding: 0.75rem 1.125rem;
+  border-bottom: 1px solid var(--borde);
+  font-size: 0.9rem;
+}
+
+/* PSEUDOCLASE :hover en filas de tabla */
+tr:hover td {
+  background: rgba(124, 58, 237, 0.05);
+}
+
+/* PSEUDOCLASE :last-child */
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* PSEUDOCLASE :nth-child en columnas de tabla */
+tbody tr td:first-child {
+  font-weight: 700;
+  color: var(--claro);
+}
+
+/* ============================================================
+   15. LISTS
+   ============================================================ */
+.lista-generos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 1.5625rem 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-generos li {
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid var(--purpura);
+  color: var(--claro);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* PSEUDOCLASE :hover en items de lista */
+.lista-generos li:hover {
+  background: var(--grad-principal);
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  border-color: transparent;
+}
+
+/* ----- Ordered list (cronograma) ----- */
+.lista-cronograma {
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: item;
+}
+
+.lista-cronograma li {
+  counter-increment: item;
+  padding: 0.875rem 1.25rem 0.875rem 3.125rem;
+  position: relative;
+  border-left: 2px solid var(--purpura);
+  margin-left: 0.9375rem;
+  font-size: 0.92rem;
+  margin-bottom: 0;
+  /* Transición en hover */
+  transition: background 0.3s ease, padding-left 0.3s ease;
+}
+
+.lista-cronograma li:hover {
+  background: rgba(124, 58, 237, 0.05);
+  padding-left: 3.5rem;
+}
+
+/* PSEUDOELEMENTO ::before para contador numerado circular */
+.lista-cronograma li::before {
+  content: counter(item);
+  position: absolute;
+  left: -1.125rem;
+  top: 0.875rem;
+  width: 32px;
+  height: 32px;
+  background: var(--grad-principal);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.lista-cronograma li:hover::before {
+  transform: scale(1.15);
+}
+
+.lista-cronograma li strong {
+  color: var(--claro);
+}
+
+.lista-cronograma li .hora {
+  color: var(--teal);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* ============================================================
+   16. IFRAMES
+   ============================================================ */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.iframe-mapa {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  border: none;
+  margin: 1.25rem 0;
+}
+
+/* ============================================================
+   16b. SEDES (ubicacion.html)
+   ============================================================ */
+.sede-mapa-wrap {
+  margin-bottom: 30px;
+}
+
+.sede-titulo {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+
+.sede-titulo.teal { color: var(--teal); }
+.sede-titulo.naranja { color: var(--naranja); }
+.sede-titulo.purpura { color: var(--purpura); }
+
+.sede-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 20px 0 50px;
+}
+
+.sede-grid .card {
+  padding: 25px;
+}
+
+.sede-subtitulo {
+  color: var(--claro);
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sede-texto {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.sede-nota {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.sede-btn-wrap {
+  margin-top: 12px;
+}
+
+.sede-btn-wrap .btn {
+  padding: 8px 20px;
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   16c. REDES SOCIALES (ubicacion.html)
+   ============================================================ */
+.redes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.red-social {
+  background: var(--grad-card);
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.red-social h3 {
+  color: var(--claro);
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   17. AUDIO
+   ============================================================ */
+.audio-player {
+  background: var(--grad-card);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 0.9375rem 1.25rem;
+  margin: 0.625rem 0;
+}
+
+.audio-player p {
+  font-size: 0.85rem;
+  color: var(--claro);
+  margin-bottom: 0.5rem;
+}
+
+.audio-player audio {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   18. FORM
+   ============================================================ */
+.form-contacto {
+  max-width: 650px;
+  margin: 0 auto;
+  background: var(--grad-card);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mutado);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* PSEUDOCLASE :focus + :focus-visible en inputs (accesibilidad) */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--purpura);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+  outline: 2px solid var(--purpura);
+  outline-offset: 1px;
+}
+
+/* :focus-visible — solo para navegación por teclado */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--naranja);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Sin outline para focus por mouse (los navegadores modernos lo manejan) */
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* PSEUDOCLASE :required */
+input:required,
+select:required,
+textarea:required {
+  border-left: 3px solid var(--naranja);
+}
+
+input:required:valid,
+select:required:valid,
+textarea:required:valid {
+  border-left-color: #22c55e;
+}
+
+/* PSEUDOELEMENTO ::placeholder */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #475569;
+  font-style: italic;
+  opacity: 1;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #0f0f1a;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--claro);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #0f0f1a;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--claro);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  font-family: inherit;
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* SELECTOR DE ATRIBUTO + PSEUDOCLASE :checked (visual para selects) */
+option:checked {
+  background: var(--purpura);
+  color: #fff;
+}
+
+/* ============================================================
+   19. COMPRA DE ENTRADAS (página comprar.html)
+   ============================================================ */
+
+/* ----- TIMER / CONTADOR REGRESIVO ----- */
+.compra-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 107, 53, 0.08);
+  border: 1px solid rgba(255, 107, 53, 0.25);
+  border-radius: 12px;
+  padding: 12px 24px;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: var(--claro);
+}
+
+.compra-timer i {
+  color: var(--naranja);
+  font-size: 1.2rem;
+}
+
+.compra-timer strong {
+  font-size: 1.4rem;
+  font-family: var(--font-heading);
+  color: var(--teal);
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+/* ----- TARJETA DE CRÉDITO VISUAL ----- */
+.card-visual-container {
+  perspective: 1000px;
+  margin-bottom: 1.5rem;
+}
+
+.card-visual {
+  width: 100%;
+  max-width: 340px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.card-visual.volteada {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #1e1b4b, #312e81, #1e1b4b);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-chip i {
+  font-size: 2.2rem;
+  color: #fbbf24;
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.3));
+}
+
+.card-brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-brand-logo i {
+  font-size: 2rem;
+  color: var(--claro);
+  transition: all 0.3s ease;
+}
+
+.card-brand-logo .fa-cc-visa {
+  color: #1a1f71;
+  font-size: 2.5rem;
+}
+
+.card-brand-logo .fa-cc-mastercard {
+  color: #eb001b;
+  font-size: 2.5rem;
+}
+
+.card-brand-logo .fa-cc-amex {
+  color: #2e77bc;
+  font-size: 2.5rem;
+}
+
+.card-number {
+  font-family: 'Courier New', monospace;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  color: var(--claro);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  word-spacing: 6px;
+}
+
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-field-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 2px;
+}
+
+.card-field-value {
+  font-size: 0.85rem;
+  color: var(--claro);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card-field-exp .card-field-value {
+  letter-spacing: 2px;
+}
+
+/* Dorso */
+.card-magstrip {
+  height: 40px;
+  background: #1a1a2e;
+  margin-top: 25px;
+}
+
+.card-back-content {
+  padding: 0.75rem 1.25rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.card-signature {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.card-signature-line {
+  height: 32px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ccc 0px,
+    #ccc 3px,
+    #ddd 3px,
+    #ddd 6px
+  );
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.card-cvv-box {
+  text-align: right;
+}
+
+.card-cvv-box .card-field-value {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: #1a1a2e;
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ----- GRID 2 COLUMNAS ----- */
+.compra-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.compra-form {
+  min-width: 0;
+}
+
+/* ----- FIELDSETS ----- */
+.compra-fieldset {
+  background: var(--grad-card);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.compra-fieldset legend {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--claro);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compra-fieldset legend i {
+  color: var(--naranja);
+}
+
+/* ----- FORM ROW (2 columnas internas) ----- */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ----- FEEDBACK (error / éxito) ----- */
+.feedback {
+  font-size: 0.78rem;
+  margin-top: 4px;
+  min-height: 1.2em;
+  transition: color 0.2s ease;
+}
+
+.feedback.error {
+  color: #ef4444;
+}
+
+.feedback.exito {
+  color: #22c55e;
+}
+
+/* Estados de validación en inputs */
+input.invalido,
+select.invalido {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+input.valido,
+select.valido {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* ----- INFO DEL EVENTO (readonly) ----- */
+.evento-info {
+  background: rgba(6, 182, 212, 0.04);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.evento-info-item {
+  margin-bottom: 6px;
+}
+
+.evento-info-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mutado);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.evento-info-valor {
+  font-size: 0.88rem;
+  color: var(--claro);
+}
+
+.evento-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* ----- CREDIT CARD BRAND ----- */
+.card-brand {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 6px 12px;
+  background: rgba(6, 182, 212, 0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+/* ----- RESUMEN (sidebar) ----- */
+.compra-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.compra-resumen {
+  background: var(--grad-card);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.compra-resumen h3 {
+  font-size: 1rem;
+  color: var(--claro);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compra-resumen h3 i {
+  color: var(--naranja);
+}
+
+.resumen-contenido {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(30, 30, 58, 0.5);
+}
+
+.resumen-item:last-child {
+  border-bottom: none;
+}
+
+.resumen-label {
+  color: var(--mutado);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resumen-total {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 2px solid var(--naranja);
+  font-weight: 700;
+}
+
+.resumen-total .resumen-label {
+  color: var(--claro);
+  font-size: 0.85rem;
+}
+
+.resumen-total span:last-child {
+  color: var(--teal);
+  font-size: 1.1rem;
+}
+
+/* ----- TOTAL BOX ----- */
+.compra-total-box {
+  background: var(--grad-principal);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.compra-total-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+}
+
+.compra-total-valor {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+/* ----- ACCIONES (botón + error) ----- */
+.compra-actions {
+  margin-top: 1.5rem;
+}
+
+.btn-error-msg {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: #ef4444;
+  display: none;
+  text-align: center;
+  transition: display 0.2s ease;
+}
+
+.btn-error-msg i {
+  margin-right: 6px;
+}
+
+.btn-lg {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+/* ----- MODAL (confirmación de compra) ----- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  align-items: center;
+  justify-content: center;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal.activo {
+  display: flex;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-contenido {
+  background: var(--gris);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 520px;
+  width: 90%;
+  position: relative;
+  animation: modalSlideIn 0.3s ease forwards;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.modal-header h3 {
+  font-size: 1.5rem;
+  color: var(--claro);
+  margin-top: 8px;
+}
+
+.modal-body {
+  font-size: 0.9rem;
+  color: var(--texto);
+  line-height: 1.7;
+}
+
+.modal-body p {
+  margin-bottom: 6px;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.modal-footer .btn {
+  min-width: 140px;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--mutado);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.modal-cerrar:hover {
+  color: var(--claro);
+  transform: rotate(90deg);
+}
+
+/* ============================================================
+   19b. COMPRA RESPONSIVE
+   ============================================================ */
+
+/* Tablet: apilar columnas */
+@media (max-width: 1024px) {
+  .compra-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compra-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .compra-total-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .compra-total-valor {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .compra-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .evento-info-row {
+    grid-template-columns: 1fr;
+  }
+
+  .compra-fieldset {
+    padding: 1.25rem;
+  }
+
+  .compra-timer {
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 10px 16px;
+  }
+
+  .compra-timer strong {
+    font-size: 1.2rem;
+  }
+
+  .modal-contenido {
+    padding: 1.5rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-footer .btn {
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   19c. FOOTER
+   ============================================================ */
+footer {
+  background: #08081a;
+  border-top: 1px solid var(--borde);
+  padding: 3.125rem 1.25rem 1.5625rem;
+  margin-top: auto;
+}
+
+.footer-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.1875rem;
+}
+
+.footer-col h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--claro);
+  margin-bottom: 0.9375rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 6px;
+}
+
+/* PSEUDOCLASE :hover ya definido para footer ul li a */
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mutado);
+  font-size: 1rem;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+/* TRANSFORMACIÓN 5: rotate + TRANSICIÓN en social icons */
+.footer-social a:hover {
+  background: var(--grad-principal);
+  color: #fff;
+  transform: translateY(-5px) rotate(360deg) scale(1.1);
+}
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: 1.875rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--borde);
+  text-align: center;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+/* ============================================================
+   20. VOLVER ARRIBA — anchor link
+   ============================================================ */
+.volver-arriba {
+  text-align: center;
+  margin-top: 1.875rem;
+}
+
+.volver-arriba a {
+  display: inline-block;
+  animation: floatUp 2s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ============================================================
+   21. RESPONSIVE — 3 PUNTOS DE CONTROL
+   ------------------------------------------------------------
+   Breakpoints:
+   a. Escritorio (> 820px) — 4 columnas fijas en artistas
+   b. Tablet (481px - 820px) — grid reducido, menú hamburguesa
+   c. Móvil (≤ 480px) — columna única, fuentes pequeñas
+   ============================================================ */
+
+/* ----- 21a. ESCRITORIO (min-width: 1200px) — 4 columnas fijas ----- */
+@media (min-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ----- 21c. TABLET (max-width: 820px) ----- */
+@media (max-width: 820px) {
+  #menu-toggle {
+    display: block;
+  }
+
+  #menu {
+    display: none;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 20, 0.99);
+    border-bottom: 2px solid var(--purpura);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  #menu.abierto {
+    display: block;
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #menu ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 20px;
+  }
+
+  #menu ul li .nav-link {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--borde);
+    border-radius: 0;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 3.125rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .form-contacto {
+    padding: 1.5625rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-grid-artistas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* SELECTOR DESCENDIENTE en responsive */
+  .tabla-container table {
+    font-size: 0.85rem;
+  }
+}
+
+/* ----- 21d. TABLET PEQUEÑA / MÓVIL GRANDE (max-width: 600px) ----- */
+@media (max-width: 600px) {
+  #hero {
+    padding: 4rem 1rem 3rem;
+  }
+
+  #hero h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .card-grid,
+  .card-grid-artistas {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  /* SELECTOR HIJO en responsive */
+  .form-contacto > .form-group {
+    margin-bottom: 0.9375rem;
+  }
+
+  .header-inner {
+    height: 60px;
+  }
+
+  #menu {
+    top: 60px;
+  }
+}
+
+/* ----- 21e. MÓVIL (max-width: 480px) ----- */
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  #hero .fecha {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  #hero .lugares-lista {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  #hero .lugares-lista li {
+    font-size: 0.85rem;
+  }
+
+  #hero p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.625rem 1.5625rem;
+    font-size: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .form-contacto {
+    padding: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.9375rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .card-img {
+    height: 160px;
+  }
+
+  .card-grid-artistas {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-generos li {
+    font-size: 0.7rem;
+    padding: 6px 14px;
+  }
+
+  footer {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.7rem;
+  }
+
+  .iframe-mapa {
+    height: 250px;
+  }
+}
+
+/* ============================================================
+   22. UNIDADES DE MEDIDA — ejemplos adicionales
+   ------------------------------------------------------------
+   - px: bordes, border-radius, sombras pequeñas
+   - rem: font-sizes, padding, margin (base 16px)
+   - em: tamaños relativos al padre
+   - %: anchos, altos de contenedores
+   - vw: font-size hero, anchos completos
+   - vh: altura hero, min-height
+   - vmin/vmax: para elementos responsive adicionales
+   ============================================================ */
+
+/* Ejemplo de vw en hero (ya arriba) */
+/* Ejemplo de vh en hero (ya arriba: min-height: 80vh) */
+/* Ejemplo de % en widths (ya arriba) */
+/* Ejemplo de rem en toda la hoja */
+/* Ejemplo de em en ::after de target="_blank" (ya arriba) */
+
+/* Unidad vmin para un elemento decorativo */
+.hero-content::after {
+  content: '';
+  display: block;
+  width: 20vmin;
+  height: 4px;
+  background: var(--grad-principal);
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   23. PSEUDOCLASE :first-child y :last-child adicionales
+   ============================================================ */
+.lista-generos li:first-child {
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid var(--purpura);
+  color: var(--claro);
+}
+
+.lista-generos li:last-child {
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid var(--purpura);
+  color: var(--claro);
+}
+
+/* PSEUDOELEMENTO ::first-letter en párrafos de secciones */
+section p::first-letter {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+/* ============================================================
+   24. ANIMACIONES ADICIONALES
+   ============================================================ */
+
+/* Animación de aparición suave para cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de entrada solo para la grilla del index (card-grid),
+   NO para .card-grid-artistas, para no interferir con el hover. */
+.card-grid .card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+.card-grid .card:nth-child(1) { animation-delay: 0.05s; }
+.card-grid .card:nth-child(2) { animation-delay: 0.1s; }
+.card-grid .card:nth-child(3) { animation-delay: 0.15s; }
+.card-grid .card:nth-child(4) { animation-delay: 0.2s; }
+
+/* ============================================================
+   25. PREFERS-REDUCED-MOTION — accesibilidad
+       Desactiva animaciones para usuarios con sensibilidad
+       al movimiento.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card {
+    animation: none;
+    opacity: 1;
+  }
+
+  #hero::before,
+  .volver-arriba a {
+    animation: none;
+  }
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artistas - Sonidos de la Ciudad</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img src="img/logo-festival.png" alt="Sonidos de la Ciudad"></a></div>
+      <button id="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="artistas.html" class="nav-link activo">Artistas</a></li>
+          <li><a href="cronograma.html" class="nav-link">Cronograma</a></li>
+          <li><a href="entradas.html" class="nav-link">Entradas</a></li>
+          <li><a href="ubicacion.html" class="nav-link">Ubicación</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Artistas <span>Confirmados</span></h2>
+        <p class="section-subtitle">Más de 20 artistas en tres escenarios durante tres días</p>
+
+        <!-- DÍA 1: ROCK -->
+        <h3 style="margin:0 0 20px;text-transform:uppercase;letter-spacing:2px;color:var(--teal)">&#9679; Día 1 &mdash; Escenario Rock (Viernes 15)</h3>
+        <div class="card-grid-artistas">
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/the-warning.webp');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>The Warning</h2>
+              <div class="genero">Hard Rock / Rock Alternativo</div>
+            </div>
+            <div class="artista-body">
+              <p>La gran revelación del hard rock moderno. Este trío de hermanas mexicanas demuestra que el rock tiene futuro con riffs afilados, batería demoledora y una presencia escénica arrolladora. Son las encargadas de abrir el festival con toda la energía desde temprano. <strong>18:00 h &mdash; Escenario Rock (Apertura).</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/turnstile.webp');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Turnstile</h2>
+              <div class="genero">Hardcore Punk / Rock</div>
+            </div>
+            <div class="artista-body">
+              <p>Hardcore punk bailable que es pura adrenalina. Su energía contagiosa y su fusión de géneros los convierte en una de las bandas más emocionantes del momento. Suben la intensidad y preparan al público para lo que viene. <strong>19:30 h &mdash; Escenario Rock.</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/fontaines-dc.png');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Fontaines D.C.</h2>
+              <div class="genero">Post-punk</div>
+            </div>
+            <div class="artista-body">
+              <p>La banda de post-punk más influyente y aclamada por la crítica en la actualidad. Su sonido crudo y poético, heredero de los grandes del género, los ha llevado a conquistar los festivales más importantes del mundo. <strong>21:15 h &mdash; Escenario Rock (Co-Headliner).</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/deftones.jpg');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Deftones</h2>
+              <div class="genero">Metal Alternativo</div>
+            </div>
+            <div class="artista-body">
+              <p>Una leyenda viva con un estatus de culto gigantesco que trasciende generaciones. Su sonido etéreo y pesado a la vez, liderado por la voz inconfundible de Chino Moreno, crea una atmósfera única. El clímax perfecto para cerrar la primera noche. <strong>23:00 h &mdash; Escenario Rock (HEADLINER / Cierre).</strong></p>
+            </div>
+          </article>
+        </div>
+
+        <!-- DÍA 2: POP & ELECTRÓNICA -->
+        <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;color:var(--naranja)">&#9679; Día 2 &mdash; Escenario Pop &amp; Electrónica (Sábado 16)</h3>
+        <div class="card-grid-artistas">
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/peggy-gou.webp');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Peggy Gou</h2>
+              <div class="genero">House / Club Dance</div>
+            </div>
+            <div class="artista-body">
+              <p>DJ y productora coreana que conquistó el mundo con sus ritmos house y dance. Su set de atardecer es ideal para recibir a la gente mientras cae el sol, creando un ambiente veraniego y relajado. <strong>18:00 h &mdash; Escenario Pop &amp; Electrónica (Apertura / Set de Atardecer).</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/chappell-roan.jpg');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Chappell Roan</h2>
+              <div class="genero">Pop</div>
+            </div>
+            <div class="artista-body">
+              <p>El fenómeno pop del momento. Su show es sumamente teatral y colorido, con una puesta en escena que combina表演艺术 con grandes éxitos. Ideal para cuando el predio ya está lleno y el público lista para corear cada tema. <strong>19:45 h &mdash; Escenario Pop &amp; Electrónica.</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/sabrina-carpenter.jpg');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Sabrina Carpenter</h2>
+              <div class="genero">Pop Global</div>
+            </div>
+            <div class="artista-body">
+              <p>La reina indiscutida del pop global. Capaz de llenar estadios por sí sola, su show principal de la jornada es un despliegue de producción, baile y hits que no da respiro. El momento más esperado de la noche pop. <strong>21:30 h &mdash; Escenario Pop &amp; Electrónica (HEADLINER POP).</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/skrillex.jpg');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Skrillex</h2>
+              <div class="genero">Bass Music / Electrónica</div>
+            </div>
+            <div class="artista-body">
+              <p>El broche de oro de la jornada. Después del pop, la noche se transforma en una rave masiva con su bass music y un despliegue de luces brutal que se extiende hasta la madrugada. Uno de los productores más influyentes de la música electrónica. <strong>23:30 h &mdash; Escenario Pop &amp; Electrónica (HEADLINER ELECTRÓNICA / Cierre).</strong></p>
+            </div>
+          </article>
+        </div>
+
+        <!-- DÍA 3: METAL -->
+        <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;color:var(--purpura)">&#9679; Día 3 &mdash; Escenario Metal (Domingo 17)</h3>
+        <div class="card-grid-artistas">
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/evanescence.webp');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Evanescence</h2>
+              <div class="genero">Metal Alternativo / Gótico</div>
+            </div>
+            <div class="artista-body">
+              <p>Metal alternativo y gótico que marcó a toda una generación. La voz inconfundible de Amy Lee y sus himnos como "Bring Me to Life" son una excelente carta de presentación para abrir la jornada más pesada del festival. <strong>17:30 h &mdash; Escenario Metal (Apertura).</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/megadeth.jpg');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Megadeth</h2>
+              <div class="genero">Thrash Metal</div>
+            </div>
+            <div class="artista-body">
+              <p>Leyendas del thrash metal. La velocidad y precisión técnica de Dave Mustaine y su banda elevan el festival a un nivel de intensidad pura. Himnos como "Symphony of Destruction" preparan el terreno para los grandes clásicos de la noche. <strong>19:15 h &mdash; Escenario Metal.</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/iron-maiden.jpg');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>Iron Maiden</h2>
+              <div class="genero">Heavy Metal</div>
+            </div>
+            <div class="artista-body">
+              <p>Una de las bandas más grandes e influyentes de la historia del heavy metal. Su puesta en escena teatral con Eddie como protagonista, sus himnos épicos y la energía de Bruce Dickinson justifican su lugar estelar. <strong>21:00 h &mdash; Escenario Metal (Co-Headliner).</strong></p>
+            </div>
+          </article>
+
+          <article class="artista card">
+            <div class="card-img" style="background:linear-gradient(rgba(15,15,26,0.55),rgba(15,15,26,0.55)),url('img/acdc.webp');background-size:cover;background-position:center"></div>
+            <div class="artista-header">
+              <h2>AC/DC</h2>
+              <div class="genero">Hard Rock</div>
+            </div>
+            <div class="artista-body">
+              <p>El titán definitivo del rock pesado. Su gira mundial es un acontecimiento histórico. Son el cierre de festival definitivo: himnos eternos como "Thunderstruck", "Back in Black" y "Highway to Hell" que todo el mundo se queda a ver para cantar a todo pulmón. <strong>23:00 h &mdash; Escenario Metal (HEADLINER / Cierre).</strong></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIO SECTION -->
+    <section style="background:var(--gris)">
+      <div class="container">
+        <h2 class="section-title">Escuchalos <span>Ahora</span></h2>
+        <p class="section-subtitle">Fragmentos de canciones de los artistas del festival</p>
+        <div style="max-width:600px;margin:0 auto">
+          <div class="audio-player">
+            <p><strong>Deftones</strong> &mdash; "Change (In the House of Flies)" (Preview)</p>
+            <audio controls>
+              <source src="audio/deftones.mp3" type="audio/mpeg">
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+          <div class="audio-player">
+            <p><strong>Chappell Roan</strong> &mdash; "Good Luck, Babe!" (Preview)</p>
+            <audio controls>
+              <source src="audio/chappell-roan.mp3" type="audio/mpeg">
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+          <div class="audio-player">
+            <p><strong>Iron Maiden</strong> &mdash; "The Trooper" (Preview)</p>
+            <audio controls>
+              <source src="audio/iron-maiden.mp3" type="audio/mpeg">
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sonidos de la Ciudad</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cronograma.html">Cronograma</a></li>
+          <li><a href="entradas.html">Entradas</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@sonidosdelaciudad.com">info@sonidosdelaciudad.com</a></li>
+          <li><a href="tel:+543854567890">+54 385 456-7890</a></li>
+          <li><a href="contacto.html">Formulario de contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Seguinos</h4>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2027 Sonidos de la Ciudad &bull; Todos los derechos reservados &bull; Proyecto de Evaluación &bull; Programación III &bull; ITSE</p>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+
+</body>
+</html>
