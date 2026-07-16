@@ -25,7 +25,7 @@ if (window.location.protocol !== 'file:') {
             iniciarCompra();
           } else {
             var s = document.createElement('script');
-            s.src = 'js/compra.js?v=3';
+            s.src = 'js/compra.js?v=4';
             s.onload = function () {
               if (typeof iniciarCompra === 'function') iniciarCompra();
             };
