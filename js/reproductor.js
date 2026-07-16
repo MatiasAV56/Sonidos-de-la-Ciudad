@@ -12,6 +12,8 @@
   audio.src = mp3;
   audio.preload = 'auto';
 
+  var autoplayIniciado = false;
+
   var saved = sessionStorage.getItem('rep_estado');
   if (saved) {
     try {
@@ -37,7 +39,9 @@
     }));
   }
 
-  function intentarAutoplay() {
+  function arrancar() {
+    if (autoplayIniciado) return;
+    autoplayIniciado = true;
     if (audio.paused) {
       audio.play().then(function () {
         if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -97,22 +101,19 @@
     if (timeDisplay) timeDisplay.textContent = '0:00 / ' + formatearTiempo(audio.duration);
   });
 
-  if (!saved) {
-    audio.play().then(function () {
-      if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      guardarEstado();
-    }).catch(function () {});
+  audio.play().then(function () {
+    if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    guardarEstado();
+    autoplayIniciado = true;
+  }).catch(function () {});
+
+  function alInteractuar() {
+    arrancar();
   }
 
-  document.addEventListener('click', function iniciar() {
-    intentarAutoplay();
-    document.removeEventListener('click', iniciar);
-  });
-
-  document.addEventListener('touchstart', function iniciar() {
-    intentarAutoplay();
-    document.removeEventListener('touchstart', iniciar);
-  });
+  document.addEventListener('click', alInteractuar);
+  document.addEventListener('touchstart', alInteractuar);
+  document.addEventListener('keydown', alInteractuar);
 
   window.addEventListener('beforeunload', guardarEstado);
   window.addEventListener('pagehide', guardarEstado);
