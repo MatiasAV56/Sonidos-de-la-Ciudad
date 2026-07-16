@@ -6,7 +6,6 @@
   var playBtn = document.getElementById('rep-play');
   var stopBtn = document.getElementById('rep-stop');
   var volumeSlider = document.getElementById('rep-vol');
-  var songName = document.getElementById('rep-cancion');
   var timeDisplay = document.getElementById('rep-tiempo');
 
   var mp3 = 'audio/The Warning - S!ck.mp3';
@@ -36,6 +35,15 @@
       reproduciendo: !audio.paused,
       volumen: audio.volume
     }));
+  }
+
+  function intentarAutoplay() {
+    if (audio.paused) {
+      audio.play().then(function () {
+        if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        guardarEstado();
+      }).catch(function () {});
+    }
   }
 
   function togglePlay() {
@@ -95,6 +103,16 @@
       guardarEstado();
     }).catch(function () {});
   }
+
+  document.addEventListener('click', function iniciar() {
+    intentarAutoplay();
+    document.removeEventListener('click', iniciar);
+  });
+
+  document.addEventListener('touchstart', function iniciar() {
+    intentarAutoplay();
+    document.removeEventListener('touchstart', iniciar);
+  });
 
   window.addEventListener('beforeunload', guardarEstado);
   window.addEventListener('pagehide', guardarEstado);
