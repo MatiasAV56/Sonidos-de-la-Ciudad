@@ -1521,9 +1521,11 @@ select.valido {
   background: var(--gris);
   border: 1px solid var(--borde);
   border-radius: 16px;
-  padding: 2.5rem;
-  max-width: 520px;
+  padding: 3rem;
+  max-width: 640px;
   width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
   animation: modalSlideIn 0.3s ease forwards;
 }
@@ -1568,7 +1570,8 @@ select.valido {
 }
 
 .modal-footer .btn {
-  min-width: 140px;
+  min-width: 130px;
+  text-align: center;
 }
 
 .modal-cerrar {
@@ -1649,12 +1652,12 @@ select.valido {
   }
 
   .modal-footer {
-    flex-direction: column;
-    align-items: stretch;
+    gap: 8px;
   }
 
   .modal-footer .btn {
-    text-align: center;
+    min-width: 0;
+    flex: 1;
   }
 }
 

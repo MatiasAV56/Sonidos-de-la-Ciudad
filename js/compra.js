@@ -1,5 +1,10 @@
 var _compraTimer = null;
 
+function cerrarModal() {
+  var m = document.getElementById('modal-exito');
+  if (m) m.classList.remove('activo');
+}
+
 function iniciarCompra() {
 
 const EVENTOS = [
@@ -787,11 +792,6 @@ function procesarCompra(e) {
     btn.disabled = true;
     btn.textContent = 'Compra Exitosa';
   }
-}
-
-function cerrarModal() {
-  const modal = getElemento('modal-exito');
-  if (modal) modal.classList.remove('activo');
 }
 
 function configurarValidacion() {
