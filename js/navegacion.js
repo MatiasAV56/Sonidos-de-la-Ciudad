@@ -15,6 +15,7 @@ if (window.location.protocol !== 'file:') {
         }
         document.title = doc.title;
         history.pushState(null, '', url);
+        window.scrollTo(0, 0);
         var filename = url.split('?')[0].split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-link').forEach(function (nl) {
           nl.classList.remove('activo');
