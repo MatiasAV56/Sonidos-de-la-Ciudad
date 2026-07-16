@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/estilos.css?v=2">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
         <h2 class="section-title">Compra de <span>Entradas</span></h2>
         <p class="section-subtitle">Completá todos los datos para adquirir tus entradas</p>
 
-        <!-- CONTADOR REGRESIVO -->
+        
         <div class="compra-timer">
           <i class="fas fa-hourglass-half"></i>
           <span>Tiempo restante para completar la compra:</span>
@@ -47,13 +47,13 @@
 
         <form id="form-compra" class="form-compra" novalidate>
 
-          <!-- ========== FILA: FORMULARIO + RESUMEN ========== -->
+          
           <div class="compra-grid">
 
-            <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+            
             <div class="compra-form">
 
-              <!-- === DATOS DEL COMPRADOR === -->
+              
               <fieldset class="compra-fieldset">
                 <legend><i class="fas fa-user"></i> Datos del Comprador</legend>
 
@@ -94,7 +94,7 @@
                 </div>
               </fieldset>
 
-              <!-- === DATOS DEL EVENTO === -->
+              
               <fieldset class="compra-fieldset">
                 <legend><i class="fas fa-ticket-alt"></i> Datos del Evento</legend>
 
@@ -163,14 +163,14 @@
                 </div>
               </fieldset>
 
-              <!-- === DATOS DE PAGO === -->
+              
               <fieldset class="compra-fieldset">
                 <legend><i class="fas fa-credit-card"></i> Datos de Pago</legend>
 
-                <!-- TARJETA VISUAL -->
+                
                 <div class="card-visual-container">
                   <div class="card-visual" id="card-visual">
-                    <!-- FRENTE -->
+                    
                     <div class="card-front">
                       <div class="card-top-row">
                         <div class="card-chip">
@@ -192,7 +192,7 @@
                         </div>
                       </div>
                     </div>
-                    <!-- DORSO -->
+                    
                     <div class="card-back">
                       <div class="card-magstrip"></div>
                       <div class="card-back-content">
@@ -237,7 +237,7 @@
                 </div>
               </fieldset>
 
-              <!-- BOTÓN DE PAGO -->
+              
               <div class="compra-actions">
                 <div id="btn-error" class="btn-error-msg">
                   <i class="fas fa-exclamation-triangle"></i>
@@ -249,7 +249,7 @@
               </div>
             </div>
 
-            <!-- COLUMNA DERECHA: RESUMEN + PRECIO -->
+            
             <div class="compra-sidebar">
               <div class="compra-resumen">
                 <h3><i class="fas fa-receipt"></i> Resumen de compra</h3>
@@ -269,7 +269,7 @@
     </section>
   </main>
 
-  <!-- MODAL DE ÉXITO -->
+  
   <div id="modal-exito" class="modal">
     <div class="modal-contenido">
       <div class="modal-header">
@@ -331,5 +331,21 @@
 
   <script src="js/menu.js"></script>
   <script src="js/compra.js"></script>
+
+  <div class="reproductor-flotante" id="reproductor">
+    <div class="rep-cancion" id="rep-cancion">The Warning - S!ck</div>
+    <div class="rep-controles">
+      <button id="rep-play" title="Reproducir / Pausa"><i class="fas fa-play"></i></button>
+      <button id="rep-stop" title="Detener"><i class="fas fa-stop"></i></button>
+      <div class="rep-vol-wrap">
+        <i class="fas fa-volume-up"></i>
+        <input type="range" id="rep-vol" min="0" max="100" value="50">
+      </div>
+      <span class="rep-tiempo" id="rep-tiempo">0:00</span>
+    </div>
+  </div>
+  <script src="js/reproductor.js"></script>
+  <script src="js/navegacion.js"></script>
+
 </body>
 </html>

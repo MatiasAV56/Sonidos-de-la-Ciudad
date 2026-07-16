@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/estilos.css?v=2">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
         <h2 class="section-title">Dónde <span>Encontrarnos</span></h2>
         <p class="section-subtitle">Cada día del festival se realiza en una sede distinta de Santiago del Estero</p>
 
-        <!-- DÍA 1 -->
+        
         <div class="sede-mapa-wrap">
           <iframe class="iframe-mapa"
             src="https://www.google.com/maps?q=Old+Lions+Rugby+Club+Santiago+del+Estero&output=embed"
@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <!-- DÍA 2 -->
+        
         <div class="sede-mapa-wrap">
           <iframe class="iframe-mapa"
             src="https://www.google.com/maps?q=Lawn+Tennis+Club+Santiago+del+Estero&output=embed"
@@ -108,7 +108,7 @@
           </div>
         </div>
 
-        <!-- DÍA 3 -->
+        
         <div class="sede-mapa-wrap">
           <iframe class="iframe-mapa"
             src="https://www.google.com/maps?q=Hipodromo+Santiago+del+Estero&output=embed"
@@ -143,14 +143,14 @@
           </div>
         </div>
 
-        <!-- ANCLAJE: volver arriba -->
+        
         <div class="volver-arriba">
           <a href="#" class="btn btn-outline">Volver arriba <i class="fas fa-arrow-up"></i></a>
         </div>
       </div>
     </section>
 
-    <!-- IFRAME REDES -->
+    
     <section style="background:var(--gris)">
       <div class="container">
         <h2 class="section-title">Redes <span>Sociales</span></h2>
@@ -218,6 +218,21 @@
   </footer>
 
   <script src="js/menu.js"></script>
+
+  <div class="reproductor-flotante" id="reproductor">
+    <div class="rep-cancion" id="rep-cancion">The Warning - S!ck</div>
+    <div class="rep-controles">
+      <button id="rep-play" title="Reproducir / Pausa"><i class="fas fa-play"></i></button>
+      <button id="rep-stop" title="Detener"><i class="fas fa-stop"></i></button>
+      <div class="rep-vol-wrap">
+        <i class="fas fa-volume-up"></i>
+        <input type="range" id="rep-vol" min="0" max="100" value="50">
+      </div>
+      <span class="rep-tiempo" id="rep-tiempo">0:00</span>
+    </div>
+  </div>
+  <script src="js/reproductor.js"></script>
+  <script src="js/navegacion.js"></script>
 
 </body>
 </html>

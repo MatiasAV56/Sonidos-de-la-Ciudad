@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/estilos.css?v=2">
 </head>
 <body>
 
@@ -32,13 +32,14 @@
     </div>
   </header>
 
+
   <main>
     <section>
       <div class="container">
         <h2 class="section-title">Artistas <span>Confirmados</span></h2>
         <p class="section-subtitle">Más de 20 artistas en tres escenarios durante tres días</p>
 
-        <!-- DÍA 1: ROCK -->
+        
         <h3 style="margin:0 0 20px;text-transform:uppercase;letter-spacing:2px;color:var(--teal)">&#9679; Día 1 &mdash; Escenario Rock (Viernes 15)</h3>
         <div class="card-grid-artistas">
           <article class="artista card">
@@ -86,7 +87,7 @@
           </article>
         </div>
 
-        <!-- DÍA 2: POP & ELECTRÓNICA -->
+        
         <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;color:var(--naranja)">&#9679; Día 2 &mdash; Escenario Pop &amp; Electrónica (Sábado 16)</h3>
         <div class="card-grid-artistas">
           <article class="artista card">
@@ -134,7 +135,7 @@
           </article>
         </div>
 
-        <!-- DÍA 3: METAL -->
+        
         <h3 style="margin:40px 0 20px;text-transform:uppercase;letter-spacing:2px;color:var(--purpura)">&#9679; Día 3 &mdash; Escenario Metal (Domingo 17)</h3>
         <div class="card-grid-artistas">
           <article class="artista card">
@@ -184,7 +185,7 @@
       </div>
     </section>
 
-    <!-- AUDIO SECTION -->
+    
     <section style="background:var(--gris)">
       <div class="container">
         <h2 class="section-title">Escuchalos <span>Ahora</span></h2>
@@ -268,5 +269,21 @@
 
   <script src="js/menu.js"></script>
 
+  <div class="reproductor-flotante" id="reproductor">
+    <div class="rep-cancion" id="rep-cancion">The Warning - S!ck</div>
+    <div class="rep-controles">
+      <button id="rep-play" title="Reproducir / Pausa"><i class="fas fa-play"></i></button>
+      <button id="rep-stop" title="Detener"><i class="fas fa-stop"></i></button>
+      <div class="rep-vol-wrap">
+        <i class="fas fa-volume-up"></i>
+        <input type="range" id="rep-vol" min="0" max="100" value="50">
+      </div>
+      <span class="rep-tiempo" id="rep-tiempo">0:00</span>
+    </div>
+  </div>
+  <script src="js/reproductor.js"></script>
+  <script src="js/navegacion.js"></script>
+
 </body>
 </html>
+

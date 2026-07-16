@@ -1,11 +1,5 @@
-/* ============================================================
-   Sonidos de la Ciudad — Sistema de Compra de Entradas
-   JavaScript – Validación, DOM, Fetch, Timer
-   ============================================================ */
+function iniciarCompra() {
 
-/* ============================================================
-   1. DATOS DEL FESTIVAL (3 eventos, uno por día)
-   ============================================================ */
 const EVENTOS = [
   {
     evento: 'Día 1 — Escenario Rock',
@@ -96,9 +90,6 @@ const EVENTOS = [
   }
 ];
 
-/* ============================================================
-   2. CONFIGURACIÓN DE TIPOS DE ENTRADA
-   ============================================================ */
 const TIPOS_ENTRADA = {
   General: 1,
   VIP: 2,
@@ -114,39 +105,23 @@ const TIPOS_ABONO = {
 const MIN_ENTRADAS = 1;
 const MAX_ENTRADAS = 6;
 
-/* ============================================================
-   3. ESTADO GLOBAL
-   ============================================================ */
 let paises = [];
 let temporizador = null;
-let segundosRestantes = 900; // 15 minutos
+let segundosRestantes = 900;
 let tarjetaDetectada = null;
 
-/* ============================================================
-   4. REFERENCIAS DOM (se cargan al iniciar)
-   ============================================================ */
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
-/* ============================================================
-   5. INICIALIZACIÓN
-   ============================================================ */
-document.addEventListener('DOMContentLoaded', function () {
-  fetchPaises();
-  cargarEventos();
-  leerParametrosURL();
-  configurarValidacion();
-  configurarListeners();
-  iniciarContador(getElemento('contador'));
-  actualizarEstadoBoton();
+fetchPaises();
+cargarEventos();
+leerParametrosURL();
+configurarValidacion();
+configurarListeners();
+iniciarContador(getElemento('contador'));
+actualizarEstadoBoton();
+actualizarResumen();
 
-  // Forzar resumen inicial vacío
-  actualizarResumen();
-});
-
-/* ============================================================
-   6. FUNCIONES AUXILIARES
-   ============================================================ */
 function getElemento(id) {
   return document.getElementById(id);
 }
@@ -186,9 +161,6 @@ function limpiarFeedback(id) {
   feedback.className = 'feedback';
 }
 
-/* ============================================================
-   7. FETCH DE PAÍSES DESDE URL JSON
-   ============================================================ */
 async function fetchPaises() {
   const select = getElemento('pais');
   if (!select) return;
@@ -200,10 +172,8 @@ async function fetchPaises() {
     if (!respuesta.ok) throw new Error('Error al cargar países');
     paises = await respuesta.json();
 
-    // Ordenar alfabéticamente por nombre
     paises.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
 
-    // Poblar select
     select.innerHTML = '<option value="">Seleccioná tu país</option>';
     paises.forEach((p) => {
       const opt = document.createElement('option');
@@ -246,9 +216,6 @@ async function fetchPaises() {
   }
 }
 
-/* ============================================================
-   8. CARGA DE EVENTOS EN SELECT
-   ============================================================ */
 function cargarEventos() {
   const select = getElemento('evento-select');
   if (!select) return;
@@ -262,9 +229,6 @@ function cargarEventos() {
   });
 }
 
-/* ============================================================
-   8b. ACTUALIZAR TIPO DE ENTRADA SEGÚN EVENTO
-   ============================================================ */
 function actualizarTiposEntrada() {
   const selectEvento = getElemento('evento-select');
   const selectTipo = getElemento('tipo-entrada');
@@ -286,16 +250,12 @@ function actualizarTiposEntrada() {
       '<option value="Palco">Palco</option>';
   }
 
-  // Restore value if still valid
   const options = Array.from(selectTipo.options).map(o => o.value);
   if (options.includes(currentVal)) {
     selectTipo.value = currentVal;
   }
 }
 
-/* ============================================================
-   8c. LEER PARÁMETROS DE URL
-   ============================================================ */
 function leerParametrosURL() {
   const params = new URLSearchParams(window.location.search);
   const abono = params.get('abono');
@@ -304,7 +264,6 @@ function leerParametrosURL() {
   const selectEvento = getElemento('evento-select');
   if (!selectEvento) return;
 
-  // Find matching abono event
   const idx = EVENTOS.findIndex(e => e.esAbono && e.abonoKey === abono);
   if (idx >= 0) {
     selectEvento.value = idx;
@@ -314,9 +273,6 @@ function leerParametrosURL() {
   }
 }
 
-/* ============================================================
-   9. ACTUALIZAR CAMPOS READONLY DEL EVENTO
-   ============================================================ */
 function actualizarInfoEvento() {
   const select = getElemento('evento-select');
   const idx = parseInt(select.value, 10);
@@ -359,9 +315,6 @@ function actualizarInfoEvento() {
   calcularTotal();
 }
 
-/* ============================================================
-   10. CÁLCULO DEL PRECIO TOTAL
-   ============================================================ */
 function calcularTotal() {
   const selectEvento = getElemento('evento-select');
   const selectTipo = getElemento('tipo-entrada');
@@ -391,10 +344,6 @@ function calcularTotal() {
   actualizarResumen();
 }
 
-/* ============================================================
-   11. VALIDACIONES POR CAMPO (expresiones regulares)
-   ============================================================ */
-
 function validarNombre(v) {
   if (!v) return 'El nombre completo es obligatorio';
   if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$/.test(v))
@@ -418,21 +367,18 @@ function validarTelefono(v) {
 function validarFechaNac(v) {
   if (!v) return 'La fecha de nacimiento es obligatoria';
 
-  // Formato dd/mm/yyyy
   if (!/^(\d{2})\/(\d{2})\/(\d{4})$/.test(v)) {
     return 'Formato inválido. Usá dd/mm/yyyy (ej: 15/06/1998)';
   }
 
   const partes = v.split('/');
   const dia = parseInt(partes[0], 10);
-  const mes = parseInt(partes[1], 10) - 1; // JS months: 0-11
+  const mes = parseInt(partes[1], 10) - 1;
   const anio = parseInt(partes[2], 10);
 
-  // Validar rango de año (personas razonables: 1900 - hoy)
   const hoy = new Date();
   if (anio < 1900 || anio > hoy.getFullYear()) return 'Año inválido';
 
-  // Construir fecha y verificar que sea válida
   const fechaNac = new Date(anio, mes, dia);
   if (
     fechaNac.getFullYear() !== anio ||
@@ -442,7 +388,6 @@ function validarFechaNac(v) {
     return 'La fecha no es válida';
   }
 
-  // Calcular edad (al menos 18 años)
   const edad = hoy.getFullYear() - anio;
   const diffMes = hoy.getMonth() - mes;
   const diffDia = hoy.getDate() - dia;
@@ -495,21 +440,18 @@ function validarTarjeta(v) {
   const len = limpio.length;
   const prefix = limpio.substring(0, 2);
 
-  // Visa: empieza con 4, 16 dígitos
   if (limpio[0] === '4') {
     if (len !== 16) return 'Visa debe tener 16 dígitos';
     tarjetaDetectada = 'visa';
     return '';
   }
 
-  // MasterCard: empieza con 51-55, 16 dígitos
   if (/^5[1-5]/.test(limpio)) {
     if (len !== 16) return 'MasterCard debe tener 16 dígitos';
     tarjetaDetectada = 'mastercard';
     return '';
   }
 
-  // American Express: empieza con 34 o 37, 15 dígitos
   if (/^3[47]/.test(limpio)) {
     if (len !== 15) return 'American Express debe tener 15 dígitos';
     tarjetaDetectada = 'amex';
@@ -531,7 +473,7 @@ function validarVencimiento(v) {
   if (mes < 1 || mes > 12) return 'El mes debe estar entre 01 y 12';
 
   const ahora = new Date();
-  const venc = new Date(anio, mes, 0); // último día del mes
+  const venc = new Date(anio, mes, 0);
   if (venc < ahora) return 'La tarjeta está vencida';
 
   return '';
@@ -540,7 +482,6 @@ function validarVencimiento(v) {
 function validarCVV(v) {
   if (!v) return 'El CVV es obligatorio';
 
-  // CVV según tipo de tarjeta
   if (tarjetaDetectada === 'amex') {
     if (!/^\d{4}$/.test(v)) return 'American Express requiere 4 dígitos de CVV';
   } else {
@@ -557,9 +498,6 @@ function validarNombreTarjeta(v) {
   return '';
 }
 
-/* ============================================================
-   12. MAPA DE VALIDACIÓN (campo → función)
-   ============================================================ */
 const VALIDACIONES = {
   'nombre-completo': validarNombre,
   'email': validarEmail,
@@ -575,9 +513,6 @@ const VALIDACIONES = {
   'nombre-tarjeta': validarNombreTarjeta
 };
 
-/* ============================================================
-   13. VALIDAR UN CAMPO Y MOSTRAR FEEDBACK
-   ============================================================ */
 function validarCampo(id) {
   const campo = getElemento(id);
   if (!campo) return false;
@@ -599,9 +534,6 @@ function validarCampo(id) {
   return true;
 }
 
-/* ============================================================
-   14. VALIDAR TODOS LOS CAMPOS Y ACTUALIZAR BOTÓN
-   ============================================================ */
 function validarTodo() {
   const ids = Object.keys(VALIDACIONES);
   const resultados = ids.map((id) => validarCampo(id));
@@ -632,9 +564,6 @@ function actualizarEstadoBoton(forzarValido) {
   }
 }
 
-/* ============================================================
-   15. DETECCIÓN DE TIPO DE TARJETA (en vivo)
-   ============================================================ */
 function detectarTarjeta(pan) {
   const contenedor = getElemento('card-brand');
   if (!contenedor) return;
@@ -669,9 +598,6 @@ function detectarTarjeta(pan) {
   actualizarCardBrand(marca);
 }
 
-/* ============================================================
-   15b. SINCRONIZAR TARJETA VISUAL
-   ============================================================ */
 function actualizarCardNumero(pan) {
   const el = getElemento('card-display-number');
   if (!el) return;
@@ -723,9 +649,6 @@ function actualizarCardBrand(marca) {
   }
 }
 
-/* ============================================================
-   16. ACTUALIZAR RESUMEN DE COMPRA
-   ============================================================ */
 function actualizarResumen() {
   const resumen = getElemento('resumen-contenido');
   if (!resumen) return;
@@ -766,13 +689,10 @@ function actualizarResumen() {
   `;
 }
 
-/* ============================================================
-   17. CONTADOR REGRESIVO
-   ============================================================ */
 function iniciarContador(elem) {
   if (!elem) return;
 
-  segundosRestantes = 900; // 15 min
+  segundosRestantes = 900;
 
   function formatearTiempo(seg) {
     const m = Math.floor(seg / 60);
@@ -809,7 +729,7 @@ function iniciarContador(elem) {
         elem.textContent = '00:00';
         elem.style.color = '#ef4444';
       }
-      // Bloquear el formulario
+
       const btn = getElemento('btn-pagar');
       if (btn) {
         btn.disabled = true;
@@ -834,9 +754,6 @@ function detenerContador() {
   }
 }
 
-/* ============================================================
-   18. PROCESAR COMPRA (submit)
-   ============================================================ */
 function procesarCompra(e) {
   e.preventDefault();
 
@@ -845,7 +762,6 @@ function procesarCompra(e) {
 
   detenerContador();
 
-  // Mostrar modal de éxito
   const modal = getElemento('modal-exito');
   const detalles = getElemento('modal-detalles');
   if (!modal || !detalles) return;
@@ -878,7 +794,6 @@ function procesarCompra(e) {
 
   modal.classList.add('activo');
 
-  // Deshabilitar botón
   const btn = getElemento('btn-pagar');
   if (btn) {
     btn.disabled = true;
@@ -886,17 +801,11 @@ function procesarCompra(e) {
   }
 }
 
-/* ============================================================
-   19. CERRAR MODAL
-   ============================================================ */
 function cerrarModal() {
   const modal = getElemento('modal-exito');
   if (modal) modal.classList.remove('activo');
 }
 
-/* ============================================================
-   20. CONFIGURAR VALIDACIÓN EN TIEMPO REAL
-   ============================================================ */
 function configurarValidacion() {
   const idsConValidation = Object.keys(VALIDACIONES);
 
@@ -904,13 +813,11 @@ function configurarValidacion() {
     const campo = getElemento(id);
     if (!campo) return;
 
-    // Validar en blur (pérdida de foco)
     campo.addEventListener('blur', function () {
       validarCampo(id);
       validarTodo();
     });
 
-    // Validar en input (tiempo real para algunos campos)
     campo.addEventListener('input', function () {
       if (id === 'num-tarjeta') {
         const formateado = formatearTarjeta(campo.value);
@@ -918,10 +825,10 @@ function configurarValidacion() {
           campo.value = formateado;
         }
         detectarTarjeta(campo.value);
-        // Ajustar maxlength según el tipo detectado
+
         campo.maxLength = tarjetaDetectada === 'amex' ? 17 : 19;
         actualizarCardNumero(campo.value);
-        // Re-validar CVV si cambia la tarjeta
+
         const cvvCampo = getElemento('cvv');
         if (cvvCampo && valor(cvvCampo)) {
           validarCampo('cvv');
@@ -941,14 +848,12 @@ function configurarValidacion() {
       }
       actualizarResumen();
 
-      // Validación en tiempo real si el campo ya fue tocado
       if (campo.classList.contains('invalido') || campo.classList.contains('valido')) {
         validarCampo(id);
         validarTodo();
       }
     });
 
-    // Para selects, validar en change
     if (campo.tagName === 'SELECT') {
       campo.addEventListener('change', function () {
         validarCampo(id);
@@ -964,26 +869,45 @@ function configurarValidacion() {
       });
     }
   });
+
+  const fechaNacInput = getElemento('fecha-nac');
+  if (fechaNacInput) {
+    fechaNacInput.addEventListener('input', function () {
+      let v = this.value.replace(/[^\d]/g, '');
+      if (v.length > 2 && v.length <= 4) {
+        v = v.substring(0, 2) + '/' + v.substring(2);
+      } else if (v.length > 4) {
+        v = v.substring(0, 2) + '/' + v.substring(2, 4) + '/' + v.substring(4, 8);
+      }
+      this.value = v;
+    });
+  }
+
+  const vencInput = getElemento('vencimiento');
+  if (vencInput) {
+    vencInput.addEventListener('input', function () {
+      let v = this.value.replace(/[^\d]/g, '');
+      if (v.length > 2) {
+        v = v.substring(0, 2) + '/' + v.substring(2, 4);
+      }
+      this.value = v;
+    });
+  }
 }
 
-/* ============================================================
-   21. CONFIGURAR LISTENERS ADICIONALES
-   ============================================================ */
 function configurarListeners() {
-  // Botón de pago
+
   const btn = getElemento('btn-pagar');
   const form = getElemento('form-compra');
   if (form) {
     form.addEventListener('submit', procesarCompra);
   }
 
-  // Cerrar modal
   const modalCerrar = getElemento('modal-cerrar');
   if (modalCerrar) {
     modalCerrar.addEventListener('click', cerrarModal);
   }
 
-  // Cerrar modal al hacer clic fuera
   const modal = getElemento('modal-exito');
   if (modal) {
     modal.addEventListener('click', function (e) {
@@ -991,7 +915,6 @@ function configurarListeners() {
     });
   }
 
-  // Input de cantidad: forzar numérico
   const cantInput = getElemento('cantidad');
   if (cantInput) {
     cantInput.addEventListener('keydown', function (e) {
@@ -1010,7 +933,6 @@ function configurarListeners() {
     });
   }
 
-  // Input de teléfono: forzar numérico
   const telInput = getElemento('telefono');
   if (telInput) {
     telInput.addEventListener('keydown', function (e) {
@@ -1029,7 +951,6 @@ function configurarListeners() {
     });
   }
 
-  // Input de número de tarjeta: forzar numérico + espacio
   const tarjetaInput = getElemento('num-tarjeta');
   if (tarjetaInput) {
     tarjetaInput.addEventListener('keydown', function (e) {
@@ -1049,7 +970,6 @@ function configurarListeners() {
     });
   }
 
-  // Input de CVV: forzar numérico
   const cvvInput = getElemento('cvv');
   if (cvvInput) {
     cvvInput.addEventListener('keydown', function (e) {
@@ -1066,64 +986,21 @@ function configurarListeners() {
         e.preventDefault();
       }
     });
-    // Voltear tarjeta al enfocar CVV
+
     cvvInput.addEventListener('focus', function () {
       const card = getElemento('card-visual');
       if (card) card.classList.add('volteada');
-      if (this.classList.contains('valido')) {
-        // no hacer nada extra
-      }
     });
-    // Volver al frente al desenfocar CVV
+
     cvvInput.addEventListener('blur', function () {
       const card = getElemento('card-visual');
       if (card) card.classList.remove('volteada');
     });
   }
-
-  // Menú hamburguesa (igual que otras páginas)
-  const toggle = getElemento('menu-toggle');
-  const menu = getElemento('menu');
-  if (toggle && menu) {
-    toggle.addEventListener('click', function () {
-      menu.classList.toggle('abierto');
-      toggle.classList.toggle('abierto');
-    });
-    menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        menu.classList.remove('abierto');
-        toggle.classList.remove('abierto');
-      });
-    });
-  }
 }
 
-/* ============================================================
-   22. AUTO-FORMATO DE FECHA DE NACIMIENTO
-   ============================================================ */
-const fechaNacInput = getElemento('fecha-nac');
-if (fechaNacInput) {
-  fechaNacInput.addEventListener('input', function () {
-    let v = this.value.replace(/[^\d]/g, '');
-    if (v.length > 2 && v.length <= 4) {
-      v = v.substring(0, 2) + '/' + v.substring(2);
-    } else if (v.length > 4) {
-      v = v.substring(0, 2) + '/' + v.substring(2, 4) + '/' + v.substring(4, 8);
-    }
-    this.value = v;
-  });
 }
 
-/* ============================================================
-   23. AUTO-FORMATO DE VENCIMIENTO MM/AA
-   ============================================================ */
-const vencInput = getElemento('vencimiento');
-if (vencInput) {
-  vencInput.addEventListener('input', function () {
-    let v = this.value.replace(/[^\d]/g, '');
-    if (v.length > 2) {
-      v = v.substring(0, 2) + '/' + v.substring(2, 4);
-    }
-    this.value = v;
-  });
+if (document.getElementById('form-compra')) {
+  iniciarCompra();
 }

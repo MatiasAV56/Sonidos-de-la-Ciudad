@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -9,14 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/estilos.css?v=2">
   <style>
-    /* CSS INTERNO: ejemplo de selector de tipo + ID combinado */
+    
     #hero .fecha i {
       color: var(--teal);
       margin-right: 6px;
     }
-    /* SELECTOR DE TIPO para el contenedor de audio destacado */
+    
     .audio-destacado {
       background: linear-gradient(135deg, #12122a, #1a0a2e);
       border: 1px solid var(--purpura);
@@ -50,8 +50,9 @@
     </div>
   </header>
 
+
   <main>
-    <!-- HERO -->
+    
     <section id="hero" class="hero">
       <div class="hero-content">
         <h1>Sonidos de la Ciudad</h1>
@@ -66,7 +67,7 @@
       </div>
     </section>
 
-    <!-- GÉNEROS -->
+    
     <section>
       <div class="container">
         <h2 class="section-title">Géneros <span>Musicales</span></h2>
@@ -86,7 +87,7 @@
       </div>
     </section>
 
-    <!-- ARTISTAS DESTACADOS -->
+    
     <section style="background:var(--gris)">
       <div class="container">
         <h2 class="section-title">Artistas <span>Destacados</span></h2>
@@ -123,7 +124,7 @@
       </div>
     </section>
 
-    <!-- VIDEO -->
+    
     <section>
       <div class="container">
         <h2 class="section-title">Viví la <span>Experiencia</span></h2>
@@ -134,7 +135,7 @@
       </div>
     </section>
 
-    <!-- AUDIO -->
+    
     <section style="background:var(--gris)">
       <div class="container">
         <h2 class="section-title">Escuchá el <span>Festival</span></h2>
@@ -218,5 +219,21 @@
 
   <script src="js/menu.js"></script>
 
+  <div class="reproductor-flotante" id="reproductor">
+    <div class="rep-cancion" id="rep-cancion">The Warning - S!ck</div>
+    <div class="rep-controles">
+      <button id="rep-play" title="Reproducir / Pausa"><i class="fas fa-play"></i></button>
+      <button id="rep-stop" title="Detener"><i class="fas fa-stop"></i></button>
+      <div class="rep-vol-wrap">
+        <i class="fas fa-volume-up"></i>
+        <input type="range" id="rep-vol" min="0" max="100" value="50">
+      </div>
+      <span class="rep-tiempo" id="rep-tiempo">0:00</span>
+    </div>
+  </div>
+  <script src="js/reproductor.js"></script>
+  <script src="js/navegacion.js"></script>
+
 </body>
 </html>
+
