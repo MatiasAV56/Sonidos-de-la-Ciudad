@@ -183,7 +183,7 @@ async function fetchPaises() {
 
   try {
     const respuesta = await fetch(
-      'https://gist.githubusercontent.com/eduardolat/b2a252d17b17363fab0974bb0634d259/raw/e12763a1e35b364974b8da47f28a7b81467feb95/paises.json'
+      'paises.json'
     );
     if (!respuesta.ok) throw new Error('Error al cargar países');
     paises = await respuesta.json();
@@ -199,36 +199,23 @@ async function fetchPaises() {
     });
   } catch (err) {
     console.warn('No se pudieron cargar los países:', err.message);
-    select.innerHTML =
-      '<option value="">Error al cargar países</option>' +
-      '<option value="Argentina">Argentina</option>' +
-      '<option value="Chile">Chile</option>' +
-      '<option value="Uruguay">Uruguay</option>' +
-      '<option value="Brasil">Brasil</option>' +
-      '<option value="Paraguay">Paraguay</option>' +
-      '<option value="Bolivia">Bolivia</option>' +
-      '<option value="Perú">Perú</option>' +
-      '<option value="Colombia">Colombia</option>' +
-      '<option value="Ecuador">Ecuador</option>' +
-      '<option value="Venezuela">Venezuela</option>' +
-      '<option value="México">México</option>' +
-      '<option value="España">España</option>' +
-      '<option value="Estados Unidos">Estados Unidos</option>';
     paises = [
-      { nombre: 'Argentina' },
-      { nombre: 'Chile' },
-      { nombre: 'Uruguay' },
-      { nombre: 'Brasil' },
-      { nombre: 'Paraguay' },
-      { nombre: 'Bolivia' },
-      { nombre: 'Perú' },
-      { nombre: 'Colombia' },
-      { nombre: 'Ecuador' },
-      { nombre: 'Venezuela' },
-      { nombre: 'México' },
-      { nombre: 'España' },
-      { nombre: 'Estados Unidos' }
+      { nombre: 'Argentina' }, { nombre: 'Bolivia' }, { nombre: 'Brasil' },
+      { nombre: 'Canadá' }, { nombre: 'Chile' }, { nombre: 'Colombia' },
+      { nombre: 'Costa Rica' }, { nombre: 'Cuba' }, { nombre: 'Ecuador' },
+      { nombre: 'El Salvador' }, { nombre: 'España' }, { nombre: 'Estados Unidos' },
+      { nombre: 'Guatemala' }, { nombre: 'Honduras' }, { nombre: 'México' },
+      { nombre: 'Nicaragua' }, { nombre: 'Panamá' }, { nombre: 'Paraguay' },
+      { nombre: 'Perú' }, { nombre: 'Portugal' }, { nombre: 'Puerto Rico' },
+      { nombre: 'República Dominicana' }, { nombre: 'Uruguay' }, { nombre: 'Venezuela' }
     ];
+    select.innerHTML = '<option value="">Seleccioná tu país</option>';
+    paises.forEach(function(p) {
+      var opt = document.createElement('option');
+      opt.value = p.nombre;
+      opt.textContent = p.nombre;
+      select.appendChild(opt);
+    });
   }
 }
 
