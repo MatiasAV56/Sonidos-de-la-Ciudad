@@ -114,6 +114,21 @@ let tarjetaDetectada = null;
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
+const VALIDACIONES = {
+  'nombre-completo': validarNombre,
+  'email': validarEmail,
+  'telefono': validarTelefono,
+  'fecha-nac': validarFechaNac,
+  'pais': validarPais,
+  'evento-select': (v) => (!v ? 'Seleccioná un evento' : ''),
+  'tipo-entrada': (v) => (!v ? 'Seleccioná un tipo de entrada' : ''),
+  'cantidad': validarCantidad,
+  'num-tarjeta': validarTarjeta,
+  'vencimiento': validarVencimiento,
+  'cvv': validarCVV,
+  'nombre-tarjeta': validarNombreTarjeta
+};
+
 fetchPaises();
 cargarEventos();
 leerParametrosURL();
@@ -498,21 +513,6 @@ function validarNombreTarjeta(v) {
     return 'Solo letras y espacios, mínimo 3 caracteres';
   return '';
 }
-
-const VALIDACIONES = {
-  'nombre-completo': validarNombre,
-  'email': validarEmail,
-  'telefono': validarTelefono,
-  'fecha-nac': validarFechaNac,
-  'pais': validarPais,
-  'evento-select': (v) => (!v ? 'Seleccioná un evento' : ''),
-  'tipo-entrada': (v) => (!v ? 'Seleccioná un tipo de entrada' : ''),
-  'cantidad': validarCantidad,
-  'num-tarjeta': validarTarjeta,
-  'vencimiento': validarVencimiento,
-  'cvv': validarCVV,
-  'nombre-tarjeta': validarNombreTarjeta
-};
 
 function validarCampo(id) {
   const campo = getElemento(id);
