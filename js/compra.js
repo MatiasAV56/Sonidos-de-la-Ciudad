@@ -1,3 +1,5 @@
+var _compraTimer = null;
+
 function iniciarCompra() {
 
 const EVENTOS = [
@@ -106,7 +108,6 @@ const MIN_ENTRADAS = 1;
 const MAX_ENTRADAS = 6;
 
 let paises = [];
-let temporizador = null;
 let segundosRestantes = 900;
 let tarjetaDetectada = null;
 
@@ -713,18 +714,18 @@ function iniciarContador(elem) {
     }
   }
 
-  if (temporizador) {
-    clearInterval(temporizador);
+  if (_compraTimer) {
+    clearInterval(_compraTimer);
   }
 
   actualizarDisplay();
 
-  temporizador = setInterval(function () {
+  _compraTimer = setInterval(function () {
     segundosRestantes--;
 
     if (segundosRestantes <= 0) {
-      clearInterval(temporizador);
-      temporizador = null;
+      clearInterval(_compraTimer);
+      _compraTimer = null;
       if (elem) {
         elem.textContent = '00:00';
         elem.style.color = '#ef4444';
@@ -748,9 +749,9 @@ function iniciarContador(elem) {
 }
 
 function detenerContador() {
-  if (temporizador) {
-    clearInterval(temporizador);
-    temporizador = null;
+  if (_compraTimer) {
+    clearInterval(_compraTimer);
+    _compraTimer = null;
   }
 }
 
@@ -999,8 +1000,4 @@ function configurarListeners() {
   }
 }
 
-}
-
-if (document.getElementById('form-compra')) {
-  iniciarCompra();
 }
